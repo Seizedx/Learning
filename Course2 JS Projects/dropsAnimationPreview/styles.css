@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+   height: 100%;
+   transition: 0.5s ease;
+}
+
+.drop {
+
+    height: 5rem;
+    width: 5rem;
+    border-radius: 100%;
+
+    position: absolute;
+    transition: 0.7s ease;
+    animation: animate 4001ms ease;
+}
+
+@keyframes animate {
+    0%{
+        opacity: 0;
+    }
+    33%{
+        opacity: 1;
+        border-radius: 20%;
+        }
+
+    66%{
+        opacity: 0.2;
+        border-radius: 50%;
+    }
+
+    100%{
+        opacity: 0;
+        border-radius: 100%;
+    } 
+}

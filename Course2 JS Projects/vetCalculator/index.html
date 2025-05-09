@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Veterinária</title>
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Quicksand', Arial, sans-serif;
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 350px;
+    padding: 20px;
+    background-color: #FFF;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    position: relative;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="%23FFC1CC" stroke-width="1" opacity="0.1"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-2-12a1 1 0 1 0-1 1 1 1 0 0 0 1-1zm4 0a1 1 0 1 0-1 1 1 1 0 0 0 1-1zm-2 2a1 1 0 1 0-1 1 1 1 0 0 0 1-1zm0 4a1.5 1.5 0 1 0-1.5 1.5 1.5 1.5 0 0 0 1.5-1.5z"/></svg>');
+    background-repeat: repeat;
+}
+
+h1 {
+    font-size: 1.8em;
+    text-align: center;
+    color: #FF6B6B;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.calculator {
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #FFF5F5;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.calculator.active {
+    display: flex;
+}
+
+h2 {
+    color: #FF6B6B;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 1em;
+    color: #333;
+    margin: 5px 0;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #FFC1CC;
+    border-radius: 10px;
+    font-size: 1em;
+    text-align: center;
+    background-color: #FFF;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #FF6B6B;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #FF6B6B;
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #FF4D4D;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
+    text-align: center;
+}
+
+.selector {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-keypad {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    background-color: #4DB6AC;
+    border-radius: 50%;
+    color: #FFF;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-keypad:hover {
+    background-color: #3D9B92;
+}
+
+select {
+    width: 70%;
+    padding: 10px;
+    border: 2px solid #FFC1CC;
+    border-radius: 10px;
+    font-size: 1em;
+    background-color: #FFF;
+    color: #333;
+}
+
+.keypad {
+    display: none;
+    position: absolute;
+    left: -200px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #FFF;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.keypad.active {
+    display: grid;
+}
+
+.keypad button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+    background-color: #FFC1CC;
+    color: #FFF;
+    border-radius: 10px;
+}
+
+.keypad button:hover {
+    background-color: #FF9999;
+}
+
+.keypad button.ok {
+    background-color: #4DB6AC;
+}
+
+.keypad button.ok:hover {
+    background-color: #3D9B92;
+}
+
+.keypad button.clear {
+    background-color: #FF4D4D;
+}
+
+.keypad button.clear:hover {
+    background-color: #E63939;
+}
+
+/* Estilização da Calculadora Padrão */
+#padrao {
+    background-color: #FFF5F5;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#padrao h2 {
+    color: #FF6B6B;
+}
+
+#display {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-align: right;
+    border: 2px solid #FFC1CC;
+    border-radius: 10px;
+    background-color: #FFF;
+    color: #333;
+}
+
+#padrao .calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    width: 100%;
+}
+
+#padrao button {
+    width: 100%;
+    height: 50px;
+    font-size: 1.2em;
+    border-radius: 10px;
+}
+
+#padrao button.number {
+    background-color: #FFC1CC;
+    color: #FFF;
+}
+
+#padrao button.number:hover {
+    background-color: #FF9999;
+}
+
+#padrao button.operation, #padrao button.equals {
+    background-color: #4DB6AC;
+    color: #FFF;
+}
+
+#padrao button.operation:hover, #padrao button.equals:hover {
+    background-color: #3D9B92;
+}
+
+#padrao button.clear, #padrao button.backspace {
+    background-color: #FF4D4D;
+    color: #FFF;
+}
+
+#padrao button.clear:hover, #padrao button.backspace:hover {
+    background-color: #E63939;
+}
+</style>
+<body>
+    <div class="container">
+        <h1>Calculadora</h1>
+
+        <!-- Selector e Botão de Teclado -->
+        <div class="selector">
+            <button class="toggle-keypad" onclick="toggleKeypad()">⌨</button>
+            <select id="calcSelector" onchange="mostrarCalculadora()">
+                <option value="dose">Dose de Medicamento</option>
+                <option value="fluido">Fluidoterapia</option>
+                <option value="converte">Conversão de Peso</option>
+                <option value="padrao">Calculadora Padrão</option>
+            </select>
+        </div>
+
+        <!-- Cálculo de Dose de Medicamento -->
+        <section id="dose" class="calculator active">
+            <h2>Dose de Medicamento</h2>
+            <label>Peso do Animal (kg):</label>
+            <input type="text" id="pesoDose" onclick="selecionarInput('pesoDose')">
+            <label>Dosagem (mg/kg):</label>
+            <input type="text" id="dosagem" onclick="selecionarInput('dosagem')">
+            <label>Concentração do Medicamento (mg/mL):</label>
+            <input type="text" id="concentracao" onclick="selecionarInput('concentracao')">
+            <button onclick="calcularDose()">Calcular</button>
+            <p id="resultadoDose"></p>
+        </section>
+
+        <!-- Cálculo de Fluidoterapia -->
+        <section id="fluido" class="calculator">
+            <h2>Fluidoterapia</h2>
+            <label>Peso do Animal (kg):</label>
+            <input type="text" id="pesoFluido" onclick="selecionarInput('pesoFluido')">
+            <label>Taxa de Manutenção (mL/kg/h):</label>
+            <input type="text" id="taxaManutencao" onclick="selecionarInput('taxaManutencao')" value="2.5">
+            <button onclick="calcularFluidoterapia()">Calcular</button>
+            <p id="resultadoFluido"></p>
+        </section>
+
+        <!-- Conversão de Peso -->
+        <section id="converte" class="calculator">
+            <h2>Conversão de Peso</h2>
+            <label>Peso (kg):</label>
+            <input type="text" id="pesoConverte" onclick="selecionarInput('pesoConverte')">
+            <button onclick="converterPeso()">Converter</button>
+            <p id="resultadoConverte"></p>
+        </section>
+
+        <!-- Calculadora Padrão -->
+        <section id="padrao" class="calculator">
+            <h2>Calculadora Padrão</h2>
+            <input type="text" id="display" readonly>
+            <div class="calc-grid">
+                <button class="clear" onclick="limparDisplay()">C</button>
+                <button class="backspace" onclick="backspaceDisplay()">←</button>
+                <button class="operation" onclick="adicionarOperacao('÷')">÷</button>
+                <button class="number" onclick="adicionarDigito('7')">7</button>
+                <button class="number" onclick="adicionarDigito('8')">8</button>
+                <button class="number" onclick="adicionarDigito('9')">9</button>
+                <button class="operation" onclick="adicionarOperacao('×')">×</button>
+                <button class="number" onclick="adicionarDigito('4')">4</button>
+                <button class="number" onclick="adicionarDigito('5')">5</button>
+                <button class="number" onclick="adicionarDigito('6')">6</button>
+                <button class="operation" onclick="adicionarOperacao('-')">-</button>
+                <button class="number" onclick="adicionarDigito('1')">1</button>
+                <button class="number" onclick="adicionarDigito('2')">2</button>
+                <button class="number" onclick="adicionarDigito('3')">3</button>
+                <button class="operation" onclick="adicionarOperacao('+')">+</button>
+                <button class="number" onclick="adicionarDigito('0')">0</button>
+                <button class="number" onclick="adicionarDigito('.')">.</button>
+                <button class="equals" onclick="calcularPadrao()">=</button>
+            </div>
+        </section>
+
+        <!-- Keypad Numérico -->
+        <div id="keypad" class="keypad">
+            <button onclick="keypadDigito('7')">7</button>
+            <button onclick="keypadDigito('8')">8</button>
+            <button onclick="keypadDigito('9')">9</button>
+            <button onclick="keypadDigito('4')">4</button>
+            <button onclick="keypadDigito('5')">5</button>
+            <button onclick="keypadDigito('6')">6</button>
+            <button onclick="keypadDigito('1')">1</button>
+            <button onclick="keypadDigito('2')">2</button>
+            <button onclick="keypadDigito('3')">3</button>
+            <button onclick="keypadDigito('0')">0</button>
+            <button onclick="keypadDigito('.')">.</button>
+            <button class="clear" onclick="keypadLimpar()">C</button>
+            <button class="ok" onclick="fecharKeypad()">OK</button>
+            <button onclick="keypadBackspace()">←</button>
+        </div>
+    </div>
+
+    <script>
+        let inputAtivo = null;
+        let expressao = '';
+        let ultimoOperador = null;
+        let isKeypadOpen = false;
+
+        // Mostrar/esconder calculadoras
+        function mostrarCalculadora() {
+            const selector = document.getElementById('calcSelector').value;
+            const calculadoras = document.querySelectorAll('.calculator');
+            calculadoras.forEach(calc => {
+                calc.classList.remove('active');
+                if (calc.id === selector) {
+                    calc.classList.add('active');
+                }
+            });
+            inputAtivo = null;
+            if (selector === 'padrao') {
+                document.getElementById('keypad').classList.remove('active');
+                isKeypadOpen = false;
+            }
+        }
+
+        // Toggle keypad
+        function toggleKeypad() {
+            const selector = document.getElementById('calcSelector').value;
+            if (selector === 'padrao') return; // Não abre keypad na calculadora padrão
+            isKeypadOpen = !isKeypadOpen;
+            document.getElementById('keypad').classList.toggle('active', isKeypadOpen);
+        }
+
+        // Selecionar input
+        function selecionarInput(inputId) {
+            inputAtivo = document.getElementById(inputId);
+        }
+
+        // Fechar keypad
+        function fecharKeypad() {
+            inputAtivo = null;
+        }
+
+        // Adicionar dígito ao input via keypad
+        function keypadDigito(digito) {
+            if (!inputAtivo) return;
+            let valor = inputAtivo.value;
+            if (digito === '.' && valor.includes('.')) return;
+            inputAtivo.value += digito;
+        }
+
+        // Limpar input via keypad
+        function keypadLimpar() {
+            if (inputAtivo) inputAtivo.value = '';
+        }
+
+        // Backspace no input via keypad
+        function keypadBackspace() {
+            if (inputAtivo) inputAtivo.value = inputAtivo.value.slice(0, -1);
+        }
+
+        // Cálculo de Dose de Medicamento
+        function calcularDose() {
+            const peso = parseFloat(document.getElementById('pesoDose').value);
+            const dosagem = parseFloat(document.getElementById('dosagem').value);
+            const concentracao = parseFloat(document.getElementById('concentracao').value);
+            const resultadoDose = document.getElementById('resultadoDose');
+
+            if (isNaN(peso) || isNaN(dosagem) || isNaN(concentracao) || peso <= 0 || dosagem <= 0 || concentracao <= 0) {
+                resultadoDose.textContent = "Por favor, insira valores válidos.";
+                return;
+            }
+
+            const doseTotal = peso * dosagem; // mg
+            const volume = doseTotal / concentracao; // mL
+
+            resultadoDose.textContent = `Dose Total: ${doseTotal.toFixed(2)} mg | Volume a administrar: ${volume.toFixed(2)} mL`;
+        }
+
+        // Cálculo de Fluidoterapia
+        function calcularFluidoterapia() {
+            const peso = parseFloat(document.getElementById('pesoFluido').value);
+            const taxaManutencao = parseFloat(document.getElementById('taxaManutencao').value);
+            const resultadoFluido = document.getElementById('resultadoFluido');
+
+            if (isNaN(peso) || isNaN(taxaManutencao) || peso <= 0 || taxaManutencao <= 0) {
+                resultadoFluido.textContent = "Por favor, insira valores válidos.";
+                return;
+            }
+
+            const volumeHora = peso * taxaManutencao; // mL/h
+            const volumeDia = volumeHora * 24; // mL/dia
+
+            resultadoFluido.textContent = `Volume por hora: ${volumeHora.toFixed(2)} mL/h | Volume por dia: ${volumeDia.toFixed(2)} mL`;
+        }
+
+        // Conversão de Peso (kg para lb)
+        function converterPeso() {
+            const peso = parseFloat(document.getElementById('pesoConverte').value);
+            const resultadoConverte = document.getElementById('resultadoConverte');
+
+            if (isNaN(peso) || peso <= 0) {
+                resultadoConverte.textContent = "Por favor, insira um peso válido.";
+                return;
+            }
+
+            const pesoLibras = peso * 2.20462; // kg para lb
+
+            resultadoConverte.textContent = `${peso.toFixed(2)} kg = ${pesoLibras.toFixed(2)} lb`;
+        }
+
+        // Calculadora Padrão
+        function adicionarDigito(digito) {
+            if (digito === '.' && expressao.includes('.')) {
+                if (!ultimoOperador) return;
+                if (expressao.split(ultimoOperador).pop().includes('.')) return;
+            }
+            expressao += digito;
+            document.getElementById('display').value = expressao;
+        }
+
+        function adicionarOperacao(operacao) {
+            if (expressao === '') return;
+            if (['+', '-', '×', '÷'].includes(expressao.slice(-1))) return;
+            expressao += operacao;
+            ultimoOperador = operacao;
+            document.getElementById('display').value = expressao;
+        }
+
+        function limparDisplay() {
+            expressao = '';
+            ultimoOperador = null;
+            document.getElementById('display').value = '';
+        }
+
+        function backspaceDisplay() {
+            expressao = expressao.slice(0, -1);
+            if (!['+', '-', '×', '÷'].includes(expressao.slice(-1))) {
+                ultimoOperador = null;
+            }
+            document.getElementById('display').value = expressao;
+        }
+
+        function calcularPadrao() {
+            if (expressao === '') return;
+            try {
+                let resultado;
+                let expr = expressao.replace('×', '*').replace('÷', '/');
+                resultado = eval(expr);
+                if (isNaN(resultado) || !isFinite(resultado)) {
+                    document.getElementById('display').value = 'Erro';
+                    expressao = '';
+                    ultimoOperador = null;
+                    return;
+                }
+                expressao = resultado.toString();
+                document.getElementById('display').value = resultado.toFixed(2);
+                ultimoOperador = null;
+            } catch {
+                document.getElementById('display').value = 'Erro';
+                expressao = '';
+                ultimoOperador = null;
+            }
+        }
+    </script>
+</body>
+</html>

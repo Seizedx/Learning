@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <h1>Calculator</h1>
+            <div class="inputs">
+                <input id="varA" placeholder="Value A" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                <select id="calculateSelector">
+                    <option value="equal">Is Equal To</option>
+                    <option value="notEqual">Is Not Equal To</option>
+                    <option value="bigger">Is Bigger Than</option>
+                    <option value="smaller">Is Smaller Than</option>
+                </select>
+                <input id="varB" placeholder="Value B" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+            </div>
+            <button id="calculateButton">Calcular</button>
+            <div class="result" id="result">
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script> <!-- used last because its the last thing to load and it wil not ruin performance-->
+</body>
+</html>

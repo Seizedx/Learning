@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  background-color: black;
+  color: #61dafb;  
+}
+
+
+.App {
+  text-align: center;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #3aff04;
+}
+
+/* Adicionar border entre os childs de app  */
+.App > *:not(:first-child) { 
+  border: 1px solid #3aff04;
+  padding: 10px;
+}
+
