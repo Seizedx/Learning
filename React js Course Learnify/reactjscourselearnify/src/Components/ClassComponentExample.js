@@ -1,16 +1,23 @@
-import React, { Component } from 'react' // importa react com Component
+// Importa React e Component do React
+import React, { Component } from 'react'
 
-// class ClassExample extends Component { // class que vai ser importada exemplo 1
+// Define a classe que herda de Component (exemplo 1, comentada)
+// class ClassExample extends Component { 
+//     // Método de renderização
+//         // Retorna um h1 com texto
 //     render() {
 //         return <h1>This is an example of Class Component</h1>
 //     }
 // }
 
-
-class ClassTest extends Component { // class que vai ser importada exemplo 2 com props
+// Define a classe que herda de Component (exemplo 2, com props)
+class ClassTest extends Component { 
+    // Método de renderização
+    // Retorna um h1 com texto e prop name
     render() {
         return <h1>This is an example of Class Component com props {this.props.name}</h1>
     }
 }
 
-export default ClassTest // export da class
+// Exporta ClassTest como default
+export default ClassTest 

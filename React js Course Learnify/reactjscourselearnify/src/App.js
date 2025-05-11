@@ -1,11 +1,19 @@
-// import React, { Component } from 'react'
-// import logo from './logo.svg';
+import React, { Component } from 'react'
+import logo from './logo.svg';
 import './App.css'; // importa style
 import FunctionTest from './Components/FunctionExample' //importa função
 import ClassTest from './Components/ClassComponentExample' //importa class
-import ReactCELTest from './Components/ReactCreateElementExample'
-import PropsTest from './Components/PropsExample'
-import ClassStateTest from './Components/StateExample';
+import ReactCELTest from './Components/ReactCreateElementExample' //importa ReactCreateElement
+import PropsTest from './Components/PropsExample' //importa props
+import ClassStateTest from './Components/StateExample' // importa class state
+import DestPropsStateTest from './Components/DestPropsStateExample' // importa Destruction props state
+import EventHandlingTest from './Components/EventHandlingExample'
+import EventHandlingClassTest from './Components/EventHandlingClassExample'
+import BindingEventHandlersTest from './Components/BindingEventHandlersExample'
+import ParentComponentTest from './Components/ParentComponentExample'
+import ConditionalRendering from './Components/ConditionalRendering'
+import NameListExample from './Components/NameListExample'
+import NameListAndKeysExample from './Components/NameListAndKeysExample'
 
 function App() {
 
@@ -28,7 +36,24 @@ function App() {
       {/* </PropsTest>  */}
       {/* Precisa colocar final em propsChildren */}
 
-    <ClassStateTest />
+    {/* <ClassStateTest utilizandoConstructor/> */}
+
+    {/* <DestPropsStateTest names="DestructPropsState" username="test1"/> */}
+
+    {/* <EventHandlingTest ExemploComButton/> */}
+    
+    {/* <EventHandlingClassTest ExemploComButtonEClass /> */}
+    
+    {/* <BindingEventHandlersTest ExemploBindingEventHandlers /> */}
+
+    {/* <ParentComponentTest ExemploDeMethodsAsProps/> */}
+
+    {/* <ConditionalRendering IfElseDeVariasFormasDiferentesNoRender/> */}
+
+    {/* <NameListExample ExemploDeMapEmNameListComoObjectosEKeys/> */}
+
+    <NameListAndKeysExample ExemploComKeyQueNaoGeraErroNoConsole />
+
 
     </div>
 

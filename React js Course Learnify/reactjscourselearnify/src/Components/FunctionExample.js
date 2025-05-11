@@ -1,7 +1,11 @@
-import React from "react" // importar react
+// Importa React
+import React from "react"
 
-function FunctionTest() { //function que vai ser chamada em App.js
+// Define componente funcional
+function FunctionTest() { 
+    // Retorna um h1 com texto
     return <h1>This is an Example of Function</h1>
 }
 
-export default FunctionTest // tem que exportar o que quiser que apareça
+// Exporta FunctionTest como default
+export default FunctionTest 
