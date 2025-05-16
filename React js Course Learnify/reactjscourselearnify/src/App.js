@@ -15,6 +15,9 @@ import ConditionalRendering from './Components/ConditionalRendering'
 import NameListExample from './Components/NameListExample'
 import NameListAndKeysExample from './Components/NameListAndKeysExample'
 import IndexAsKeyAntiPatternTest from './Components/IndexAsKeyAntiPatternExample'
+import FormHandlingTest from './Components/FormHandlingBasicsExample'
+import ClassProject1 from './Components/ClassProject1'
+import ClassProject2 from './Components/ClassProject2'
 
 function App() {
 
@@ -55,8 +58,13 @@ function App() {
 
     {/* <NameListAndKeysExample ExemploComKeyQueNaoGeraErroNoConsole /> */}
 
-    <IndexAsKeyAntiPatternTest />
+    {/* <IndexAsKeyAntiPatternTest ExemploComKeyComIndex/> */}
 
+    {/* <FormHandlingTest ExemploUtilizandoFormsEComoMudarValores/> */}
+
+    {/* <ClassProject1 ExemploDeLifeCycleEstatico /> */}
+
+    <ClassProject2 ExemploDe/>
 
     </div>
 
