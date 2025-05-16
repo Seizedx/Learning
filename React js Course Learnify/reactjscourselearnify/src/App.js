@@ -14,6 +14,7 @@ import ParentComponentTest from './Components/ParentComponentExample'
 import ConditionalRendering from './Components/ConditionalRendering'
 import NameListExample from './Components/NameListExample'
 import NameListAndKeysExample from './Components/NameListAndKeysExample'
+import IndexAsKeyAntiPatternTest from './Components/IndexAsKeyAntiPatternExample'
 
 function App() {
 
@@ -52,7 +53,9 @@ function App() {
 
     {/* <NameListExample ExemploDeMapEmNameListComoObjectosEKeys/> */}
 
-    <NameListAndKeysExample ExemploComKeyQueNaoGeraErroNoConsole />
+    {/* <NameListAndKeysExample ExemploComKeyQueNaoGeraErroNoConsole /> */}
+
+    <IndexAsKeyAntiPatternTest />
 
 
     </div>
