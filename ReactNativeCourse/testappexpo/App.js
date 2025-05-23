@@ -8,7 +8,7 @@ import { View, Text, Image } from 'react-native';
 // import TextInputTest from './Components/TextInput';
 // import Buttons from './Components/Buttons';
 // import FortuneCookieApp from './Components/FortuneCookieApp'
-import Cronometer from './Components/Cronometer';
+// import Cronometer from './Components/Cronometer';
 
 export class App extends Component {
   render() {
@@ -28,9 +28,9 @@ export class App extends Component {
 
         {/* <Buttons UtilizandoFuncaoOnPressDeBotaoECriandoFunction/> */}
 
-        {/* <FortuneCookieApp PrimeiraAplicacaoTest/> */}
+        {/* <FortuneCookieApp AplicacaoDeBiscoitoDaSorte/> */}
 
-        <Cronometer />
+        {/* <Cronometer AplicacaoDeUmCronometro/> */}
 
       </View>
     )

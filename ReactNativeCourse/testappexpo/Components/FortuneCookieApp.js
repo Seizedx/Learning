@@ -1,17 +1,22 @@
+// Importa React e Component do React
 import React, { Component } from 'react'
+// Importa componentes Text, StyleSheet, View, Image e TouchableOpacity do React Native
 import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native'
 
+// Define a classe FortuneCookieApp que herda de Component
 class FortuneCookieApp extends Component {
+    // Construtor da classe
     constructor(props) {
+        // Chama o construtor da classe pai com props
         super(props);
-        
+        // Inicializa o estado com phrases e img
         this.state = {
-            phrases: '',
-            img: require('../src/biscoito.png')
+            phrases: '', // Frase inicial vazia
+            img: require('../src/biscoito.png') // Imagem inicial do biscoito fechado
         }
-        
+        // Vincula o método breakCookie ao this
         this.breakCookie = this.breakCookie.bind(this);
-    
+        // Array de frases para o biscoito
         this.phrases = [
             'Do not be afraid of competition.',
             'An exciting opportunity lies ahead of you.',
@@ -123,98 +128,122 @@ class FortuneCookieApp extends Component {
         ]
     };
     
-breakCookie() {
-    let random = Math.floor(Math.random() * this.phrases.length);
-    
-    this.setState({
-        img: require('../src/biscoito.png'),
-        phrases: ''
-    });
-    
-    setTimeout(() => {
+    // Método para "quebrar" o biscoito
+    breakCookie() {
+        // Gera índice aleatório para selecionar frase
+        let random = Math.floor(Math.random() * this.phrases.length);
+        // Reseta o estado com imagem inicial e frase vazia
         this.setState({
-            phrases: '"' + this.phrases[random] + '"',
-            img: require('../src/biscoitoAberto.png')
+            img: require('../src/biscoito.png'),
+            phrases: ''
         });
-    }, 200);
-}
+        // Após 200ms, atualiza com nova frase e imagem de biscoito aberto
+        setTimeout(() => {
+            this.setState({
+                phrases: '"' + this.phrases[random] + '"',
+                img: require('../src/biscoitoAberto.png')
+            });
+        }, 200);
+    }
     
+    // Método que define o que será renderizado
     render() {
+        // Retorna o JSX
         return (
+            // View com estilo container
+                // Texto do título
+                // Imagem do biscoito
+                // Botão para quebrar o biscoito
+                // View para conter texto do botão
+                // Texto do botão
+                // Fecha View do botão
+                // Fecha TouchableOpacity
+                // Texto da frase
+                // Exibe frase do estado
+                // Fecha a View principal
             <View style={styles.container}>
-                <Text 
-                style={[styles.titleText, styles.textCenter]}>
+                <Text
+                    style={[styles.titleText, styles.textCenter]} // Aplica estilos titleText e textCenter
+                >
                     FORTUNE COOKIE
                 </Text>
-                <Image 
-                style={[styles.img, styles.alignCenter]} 
-                source={this.state.img}/>
-                <TouchableOpacity 
-                style={[styles.breakButton, styles.alignCenter]}
-                onPress={this.breakCookie}>
+                <Image
+                    style={[styles.img, styles.alignCenter]} // Aplica estilos img e alignCenter
+                    source={this.state.img} // Usa imagem do estado
+                />
+                <TouchableOpacity
+                    style={[styles.breakButton, styles.alignCenter]} // Aplica estilos breakButton e alignCenter
+                    onPress={this.breakCookie} // Chama breakCookie ao pressionar
+                >
                     <View>
-                        <Text 
-                        style={styles.breakButtonText}>
-                        Break Cookie
+                        <Text
+                            style={styles.breakButtonText} // Aplica estilo breakButtonText
+                        >
+                            Break Cookie
                         </Text>
                     </View>
                 </TouchableOpacity>
-                <Text 
-                style={[styles.phraseText, styles.textCenter]}>
-                    {this.state.phrases}</Text>
+                <Text
+                    style={[styles.phraseText, styles.textCenter]} // Aplica estilos phraseText e textCenter
+                >
+                    {this.state.phrases} 
+                </Text>
             </View>
         )
     }
 }
 
+// Cria objeto de estilos com StyleSheet
 const styles = StyleSheet.create({
+    // Estilo para o contêiner View
     container: {
-        flex: 1
-
+        flex: 1 // Ocupa todo o espaço disponível
     },
-    
+    // Estilo para o texto do título
     titleText: {
-        marginTop:50,
-        fontSize: 40,
-        fontWeight: 700,
-        color: 'rgb(54, 54, 54)'
+        marginTop: 50, // Margem superior
+        fontSize: 40, // Tamanho da fonte
+        fontWeight: 700, // Peso da fonte (negrito)
+        color: 'rgb(54, 54, 54)' // Cor cinza escura
     },
+    // Estilo para a imagem
     img: {
-        width: 250,
-        height: 250,
-        margin: 20
-
+        width: 250, // Largura da imagem
+        height: 250, // Altura da imagem
+        margin: 20 // Margem ao redor
     },
-
+    // Estilo para o texto da frase
     phraseText: {
-        color: 'white',
-        fontFamily: 'demonSker',
-        fontSize: 30,
-        margin: 10,
-        fontStyle: 'italic'
+        color: 'white', // Cor do texto
+        fontFamily: 'demonSker', // Fonte personalizada
+        fontSize: 30, // Tamanho da fonte
+        margin: 10, // Margem ao redor
+        fontStyle: 'italic' // Estilo itálico
     },
-
+    // Estilo para o botão
     breakButton: {
-        backgroundColor: 'rgb(63, 51, 230)',
-        padding: 20,
-        boxShadow: '5px 5px 5px 0px rgba(16, 64, 166, 0.5)',
-        borderRadius: 10,
-        fontSize: 20
+        backgroundColor: 'rgb(63, 51, 230)', // Fundo azul
+        padding: 20, // Espaçamento interno
+        boxShadow: '5px 5px 5px 0px rgba(16, 64, 166, 0.5)', // Não suportado no React Native
+        borderRadius: 10, // Cantos arredondados
+        fontSize: 20 // Não aplicado (fonte é definida no texto interno)
     },
-
+    // Estilo para o texto do botão
     breakButtonText: {
-        fontFamily: 'arial',
-        fontSize: 25,
-        color: 'rgb(0, 0, 0)',
-        fontWeight: 'bold'
+        fontFamily: 'arial', // Fonte Arial
+        fontSize: 25, // Tamanho da fonte
+        color: 'rgb(0, 0, 0)', // Cor preta
+        fontWeight: 'bold' // Peso da fonte (negrito)
     },
-
+    // Estilo para centralizar elementos
     alignCenter: {
-        alignSelf: 'center'
+        alignSelf: 'center' // Centraliza horizontalmente
     },
-
+    // Estilo para centralizar texto
     textCenter: {
-        textAlign: 'center'
+        textAlign: 'center' // Alinha texto ao centro
     }
 })
+
+// Exporta FortuneCookieApp como default
 export default FortuneCookieApp;

@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "vetCalculator",
+    "slug": "vetCalculator",
+    "version": "1.0.0",
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Permitir que o app acesse suas fotos para adicionar imagens do pet.",
+          "cameraPermission": "Permitir que o app acesse a câmera para tirar fotos do pet."
+        }
+      ]
+    ]
+  }
+}
