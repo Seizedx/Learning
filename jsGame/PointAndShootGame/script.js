@@ -227,8 +227,7 @@ class Particle {
         // Define o tamanho da partícula
         this.size = size;
         // Define a posição x, com deslocamento para centralizar a partícula
-        this.x = x + this.size *  Capa de Chuva Infantil - Kit com 2 Capas de Chuva Infantil Sortidas
-0.5;
+        this.x = x + this.size * 0.5;
         // Define a posição y, com deslocamento para centralizar a partícula
         this.y = y + this.size * 0.5;
         // Define um raio inicial aleatório para a partícula
