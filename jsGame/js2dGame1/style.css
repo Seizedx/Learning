@@ -1,3 +1,12 @@
+* { /* Forma de fazer ficar responsivo em mobile*/
+    margin: 0; /* Forma de fazer ficar responsivo em mobile*/
+    padding: 0; /* Forma de fazer ficar responsivo em mobile*/
+    box-sizing: border-box; /* Forma de fazer ficar responsivo em mobile*/
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
 body {
     background: black;
 }
@@ -8,8 +17,37 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     border: 5px solid white;
+    max-width: 100%; /* Forma de fazer ficar responsivo em mobile*/
+    max-height: 100%; /* Forma de fazer ficar responsivo em mobile*/
 }
 
 #playerImage, #backgroundImage, #enemyImage {
     display: none;
+}
+
+#fullScreenButton {
+    z-index: 1;
+    background-color: grey;
+    border-radius: 5px;
+    position: absolute;
+    font-size: 20px;
+    padding: 10px;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes blink {
+  0%, 100% {
+    background-color: grey;
+}
+50% {
+    background-color: rgb(255, 54, 54);
+    opacity: 0.3; /* ou outra cor */
+}
+}
+
+#fullScreenButton:hover {
+    animation: blink 2s ease-in-out infinite;
+    cursor: pointer;
 }
