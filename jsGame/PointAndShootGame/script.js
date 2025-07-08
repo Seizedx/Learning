@@ -166,7 +166,7 @@ class Explosion {
         // Cria um novo objeto Image para o sprite de explosão
         this.image = new Image();
         // Define o caminho da imagem do sprite de explosão
-        this.image.src = '../src/img/collision/boom.png';
+        this.image.src = '../src/img/collision/boom1.png';
         // Define a largura do sprite de explosão
         this.spriteWidth = 200;
         // Define a altura do sprite de explosão

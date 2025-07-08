@@ -6,7 +6,9 @@ import {
     Rolling,
     Diving,
     Hit
-} from './playerStates.js';
+    } from './playerStates.js';
+    import { CollisionAnimation } from './collisionAnimation.js';
+    import { FloatingMessage } from './floatingMessages.js';
 
 export class Player {
     constructor(game) {
@@ -35,15 +37,16 @@ export class Player {
             new Diving(this.game),
             new Hit(this.game)
         ];
+        this.currentState = null;
     }
 update(input, deltaTime) {
     this.checkCollision();
     this.currentState.handleInput(input);
     // Movimento horizontal
     this.x += this.speed;
-    if (input.includes('ArrowRight')) {
+    if (input.includes('ArrowRight') && this.currentState !== this.states[6]) {
         this.speed = this.maxSpeed;
-    } else if (input.includes('ArrowLeft')) {
+    } else if (input.includes('ArrowLeft') && this.currentState !== this.states[6]) {
         this.speed = -this.maxSpeed;
     } else {
         this.speed = 0;
@@ -101,10 +104,16 @@ update(input, deltaTime) {
             ) {
                 //collision detected
                 enemy.markedForDeletion = true;
+                this.game.collisions.push(new CollisionAnimation(this.game, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
                 if(this.currentState === this.states[4] || this.currentState === this.states[5]) {
                     this.game.score++;
+                    this.game.floatingMessages.push(new FloatingMessage('+1', enemy.x, enemy.y, 115, 45));
                 } else {
                     this.setState(6, 0);
+                    this.game.lives--;
+                    if(this.game.lives <= 0) {
+                        this.game.gameOver = true;
+                    }
                 }
             }
         });
