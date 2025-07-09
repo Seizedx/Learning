@@ -8,12 +8,13 @@ import { View, Text, Image } from 'react-native';
 // import TextInputTest from './Components/TextInput';
 // import Buttons from './Components/Buttons';
 // import FortuneCookieApp from './Components/FortuneCookieApp'
-// import Cronometer from './Components/Cronometer';
+// import Cronometer from './Components/Cronometer1';
+import Cronometer from './Components/Cronometer';
 
 export class App extends Component {
   render() {
     return (
-      <View style={{backgroundColor: 'darkgrey', height: '100%', width:'100%', padding:0, margin:0}}>
+      <View style={{backgroundColor: 'darkgrey', height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100% '}}>
         {/* <TestImage largura={100} altura={100} nome={'testName'} ChamandoComponentComPropsDiretamente/> */}
 
         {/* <ConstructorState UsandoConstructorParaStatesEBind />         */}
@@ -31,6 +32,8 @@ export class App extends Component {
         {/* <FortuneCookieApp AplicacaoDeBiscoitoDaSorte/> */}
 
         {/* <Cronometer AplicacaoDeUmCronometro/> */}
+
+        <Cronometer AplicacaoDeUmCronometro/>
 
       </View>
     )
