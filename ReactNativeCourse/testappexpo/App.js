@@ -9,7 +9,10 @@ import { View, Text, Image } from 'react-native';
 // import Buttons from './Components/Buttons';
 // import FortuneCookieApp from './Components/FortuneCookieApp'
 // import Cronometer from './Components/Cronometer1';
-import Cronometer from './Components/Cronometer';
+// import Cronometer from './Components/Cronometer';
+// import ScrollView from './Components/ScrollView';
+// import FlatListExample from './Components/FlatList';
+import ItemDivide from './Components/ItemDivide/Example1';
 
 export class App extends Component {
   render() {
@@ -33,7 +36,13 @@ export class App extends Component {
 
         {/* <Cronometer AplicacaoDeUmCronometro/> */}
 
-        <Cronometer AplicacaoDeUmCronometro/>
+        {/* <Cronometer AplicacaoDeUmCronometro/> */}
+
+        {/* <ScrollView TestandoScrollView /> */}
+
+        {/* <FlatListExample RenderCondicional /> */}
+
+        <ItemDivide SeparandoItensEmArquivosDiferentes />
 
       </View>
     )
