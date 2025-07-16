@@ -90,3 +90,10 @@ const styles = StyleSheet.create({
 
 // Exporta Buttons como default
 export default Buttons
+
+// title: Texto exibido no botão (ex.: "Clique aqui").
+// onPress: Callback chamado quando o botão é pressionado.
+// color: Cor de fundo do botão (ex.: "#841584").
+// disabled: Booleano que desabilita (true) ou habilita (false) o botão (padrão: false).
+// accessibilityLabel: Texto para leitores de tela, melhora acessibilidade (ex.: "Botão de enviar").
+// testID: Identificador para testes automatizados.

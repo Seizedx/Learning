@@ -52,9 +52,9 @@ export class App extends Component {
 
         {/* <SliderExample SliderComOpções /> */}
 
-        {/* <SwitchExample /> */}
+        {/* <SwitchExample SeletorONOFFComOpções /> */}
 
-        <ChallengeApp />
+        <ChallengeApp TestFunções />
 
       </View>
     )

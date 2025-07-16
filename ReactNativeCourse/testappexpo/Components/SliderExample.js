@@ -26,7 +26,6 @@ export default class SliderExample extends Component {
             maximumTrackTintColor='green'
             thumbTintColor='pink' //cor do circle
             // utilizar transform scale no style pra aumentar tamanho dessa caralha
-            tapToSeek={true}
         />
         <Text style={styles.text}>{this.state.valor.toFixed(2)}</Text>
       </View>

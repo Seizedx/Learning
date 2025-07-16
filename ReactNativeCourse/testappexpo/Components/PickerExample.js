@@ -1,3 +1,5 @@
+//npm install @react-native-picker/picker
+
 import React, { Component } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
