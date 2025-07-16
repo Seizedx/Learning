@@ -12,7 +12,11 @@ import { View, Text, Image } from 'react-native';
 // import Cronometer from './Components/Cronometer';
 // import ScrollView from './Components/ScrollView';
 // import FlatListExample from './Components/FlatList';
-import ItemDivide from './Components/ItemDivide/Example1';
+// import ItemDivide from './Components/ItemDivide/Example1';
+// import PickerExample from './Components/PickerExample';
+// import SliderExample from './Components/SliderExample';
+// import SwitchExample from './Components/SwitchExample';
+import ChallengeApp from './Components/ChallengeApp';
 
 export class App extends Component {
   render() {
@@ -42,7 +46,15 @@ export class App extends Component {
 
         {/* <FlatListExample RenderCondicional /> */}
 
-        <ItemDivide SeparandoItensEmArquivosDiferentes />
+        {/* <ItemDivide SeparandoItensEmArquivosDiferentes /> */}
+
+        {/* <PickerExample SeletorComOpções /> */}
+
+        {/* <SliderExample SliderComOpções /> */}
+
+        {/* <SwitchExample /> */}
+
+        <ChallengeApp />
 
       </View>
     )
