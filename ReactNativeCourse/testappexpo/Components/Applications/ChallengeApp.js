@@ -32,6 +32,7 @@ export default class ChallengeApp extends Component {
     this.limitInput = React.createRef();
     this.nameCatch = this.nameCatch.bind(this);
     this.ageCatch = this.ageCatch.bind(this);
+    this.openAccount = this.openAccount.bind(this);
   }
     
     nameCatch(text) {
@@ -44,11 +45,36 @@ export default class ChallengeApp extends Component {
     const numericValue = parseFloat(text);
     this.setState({ limitValue: isNaN(numericValue) ? 0 : numericValue });
   }
-  openAccount() {             ////////////////////////////////////////
-    if( this.name === '' ||
-        this.name === isNaN
-    )
-    Alert.alert('Account Register Information:', 'test' )
+  openAccount() {
+    const { name, age, limitValue, sex, sexes, student } = this.state;
+    let studentValue;
+
+    // Validate inputs
+    if (!name || typeof name !== 'string' || name.trim() === '') {
+      return Alert.alert('Invalid Values', 'Please enter a valid name.');
+    }
+    if (!age || isNaN(parseFloat(age)) || parseFloat(age) <= 0) {
+      return Alert.alert('Invalid Values', 'Please enter a valid age.');
+    }
+    if (limitValue === 0) {
+      return Alert.alert('Invalid Values', 'Please set a valid desired limit.');
+    }
+    if(student) {
+      studentValue = 'Yes';
+    } else {
+      studentValue = 'No';
+    }
+
+    // Success message with account details
+    const sexName = sexes[sex].name;
+    const message = `
+      Name: ${name}
+      Age: ${age}
+      Sex: ${sexName}
+      Desired Limit: $${limitValue.toFixed(2)}
+      Are You a Student? ${studentValue}
+    `;
+    return Alert.alert('Account Registered', message);
   }
 
   render() {

@@ -7,16 +7,17 @@ import { View, Text, Image } from 'react-native';
 // import FlexBoxAndAlignments from './Components/FlexBoxAndAlignments';
 // import TextInputTest from './Components/TextInput';
 // import Buttons from './Components/Buttons';
-// import FortuneCookieApp from './Components/FortuneCookieApp'
-// import Cronometer from './Components/Cronometer1';
-// import Cronometer from './Components/Cronometer';
+// import FortuneCookieApp from './Components/Applications/FortuneCookieApp'
+// import Cronometer from './Components/Applications/Cronometer1';
+// import Cronometer from './Components/Applications/Cronometer';
 // import ScrollView from './Components/ScrollView';
 // import FlatListExample from './Components/FlatList';
 // import ItemDivide from './Components/ItemDivide/Example1';
 // import PickerExample from './Components/PickerExample';
 // import SliderExample from './Components/SliderExample';
 // import SwitchExample from './Components/SwitchExample';
-import ChallengeApp from './Components/ChallengeApp';
+// import ChallengeApp from './Components/Applications/ChallengeApp';
+import InstaExample from './Components/Applications/InstaExample';
 
 export class App extends Component {
   render() {
@@ -54,7 +55,9 @@ export class App extends Component {
 
         {/* <SwitchExample SeletorONOFFComOpções /> */}
 
-        <ChallengeApp TestFunções />
+        {/* <ChallengeApp AplicacaoParaTestarFunções /> */}
+
+        <InstaExample />
 
       </View>
     )
