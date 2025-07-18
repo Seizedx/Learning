@@ -7,7 +7,7 @@ import { View, Text, StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     // Estilo para o contêiner View
     container: {
-        marginTop: 30 // Margem superior de 30 pixels
+        flex: 1,
     },
     // Estilo para o primeiro texto
     text1: {

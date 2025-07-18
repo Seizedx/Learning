@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, StatusBar } from 'react-native';
 // import TestImage from './Components/ImageComponent';
 // import ConstructorState from './Components/ConstructorState';
 // import StyleSheetUsage from './Components/StyleSheetList';
@@ -22,7 +22,16 @@ import InstaExample from './Components/Applications/InstaExample';
 export class App extends Component {
   render() {
     return (
-      <View style={{backgroundColor: 'darkgrey', height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100% '}}>
+      <View style={{ height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100%'}}>
+
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="#ffffff"
+        hidden={false}
+        animated={true}
+        translucent={false}
+      />
+
         {/* <TestImage largura={100} altura={100} nome={'testName'} ChamandoComponentComPropsDiretamente/> */}
 
         {/* <ConstructorState UsandoConstructorParaStatesEBind />         */}

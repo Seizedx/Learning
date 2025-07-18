@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     // Estilo para o contêiner View
     container: {
         flex: 1, // Ocupa todo o espaço disponível
-        marginTop: 40 // Margem superior de 40 pixels
     },
     // Estilo para o TextInput
     input: {

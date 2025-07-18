@@ -28,7 +28,6 @@ export default class SwitchExample extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 40,
     },
     switch: {
         marginTop: 40,

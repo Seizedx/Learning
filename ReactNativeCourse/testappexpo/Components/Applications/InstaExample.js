@@ -9,36 +9,36 @@ export default class InstaExample extends Component {
       feed: [
         {
           id: '1',
-          nome: 'João Carlos',
+          username: 'João Carlos',
           description: 'this dude sucks',
-          perfilImg: "https://neweralive.na/wp-content/uploads/2024/06/lloyd-sikeba.jpg/",
+          profilePic: "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg",
           imgPub: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCzcrKDyYtbNfETgZvDiQMETIjZdFFNhBnq2VEEONGE_zmFj70y6lv2SlHsBvVe2g0UDQ&usqp=CAU",
           liked: false,
           likes: 0
         },
         {
           id: '2',
-          nome: 'João Pedro',
+          username: 'João Pedro',
           description: 'this dude also sucks',
-          perfilImg: "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+          profilePic: "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
           imgPub: "https://media.istockphoto.com/id/465110510/photo/perfect-sky-and-ocean.jpg?s=612x612&w=0&k=20&c=Q0JW-T65F6m8JajMS4ZanlNQTNDA3LapQp_4xGqOFu4=",
           liked: false,
           likes: 0
         },
         {
           id: '3',
-          nome: 'Carlos João',
+          username: 'Carlos João',
           description: 'this dude sucks the most',
-          perfilImg: "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+          profilePic: "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
           imgPub: "https://t3.ftcdn.net/jpg/02/70/63/44/360_F_270634430_KAoZy2ROeYTiFAwuAKSKNbRN36Ddg1Qr.jpg",
           liked: false,
           likes: 0
         },
         {
           id: '4',
-          nome: 'Pedro João',
+          username: 'Pedro João',
           description: 'this dude really sucks',
-          perfilImg: "https://caricom.org/wp-content/uploads/Floyd-Morris-Remake-1024x879-1.jpg",
+          profilePic: "https://caricom.org/wp-content/uploads/Floyd-Morris-Remake-1024x879-1.jpg",
           imgPub: "https://thumbs.dreamstime.com/b/ocean-horizon-vertical-15318274.jpg",
           liked: false,
           likes: 0
@@ -68,8 +68,9 @@ export default class InstaExample extends Component {
 
         <FlatList
           showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
           data={this.state.feed}
-          renderItem={(item) => <List data={item} />}
+          renderItem={({item}) => <List data={item} />}
         />
       </View>
     )
@@ -79,7 +80,6 @@ export default class InstaExample extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 40,
   },
   header: {
     height: 55,

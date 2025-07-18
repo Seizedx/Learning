@@ -41,7 +41,6 @@ class TextInputTest extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1, // Ocupa todo o espaço disponível
-        marginTop: 40 // Margem superior de 40 pixels
     },
     input: {
         color: 'black', // Cor do texto

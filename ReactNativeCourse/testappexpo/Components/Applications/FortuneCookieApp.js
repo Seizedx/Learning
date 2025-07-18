@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     },
     // Estilo para o texto do título
     titleText: {
-        marginTop: 50, // Margem superior
+        marginTop: 10, // Margem superior
         fontSize: 40, // Tamanho da fonte
         fontWeight: 700, // Peso da fonte (negrito)
         color: 'rgb(54, 54, 54)' // Cor cinza escura

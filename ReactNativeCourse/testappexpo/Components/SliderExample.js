@@ -36,7 +36,6 @@ export default class SliderExample extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 40,
     },
     slider: {
         width: 130,

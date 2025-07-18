@@ -46,7 +46,6 @@ export default class PickerExample extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30,
   },
   logo: {
     fontSize: 28,
