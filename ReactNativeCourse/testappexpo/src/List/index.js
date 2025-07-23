@@ -7,8 +7,48 @@ export default class List extends Component {
     this.state = {
         feed: this.props.data,
     };
+    this.showLikes = this.showLikes.bind(this);
+    this.like = this.like.bind(this);
   }
+
+    like() {
+    let feed = this.state.feed;
+    if(feed.liked === true) {
+      this.setState({
+        feed: {
+          ...feed,
+          liked: false,
+          likes: feed.likes - 1,
+        },
+      });
+    } else {
+      this.setState({
+        feed: {
+          ...feed,
+          liked: true,
+          likes: feed.likes + 1
+        },
+
+      });
+    }
+  }
+  
+  showLikes(likes) {
+    let feed = this.state.feed;
+    if(feed.likes <= 0) {
+      return;
+    }
+    return(
+      <Text style={styles.textLikes}>
+        {feed.likes} {feed.likes > 1 ? 'curtidas' : 'curtida'}
+      </Text>
+    )
+  }
+
   render() {
+    const likedImg = this.state.feed.liked
+    ? require('../../src/img/likeada.png')
+    : require('../../src/img/like.png')
     return (
       <View style={styles.feedArea}>
         <View style={styles.viewProfile}>
@@ -24,13 +64,13 @@ export default class List extends Component {
           source={{uri: this.state.feed.imgPub}}
         />
         <View style={styles.likeArea}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.like}>
             <Image 
-              source={require('../../src/img/like.png')}
+              source={likedImg}
               style={styles.icons}
             />
           </TouchableOpacity>
-          <TouchableOpacity
+          <TouchableOpacity onPress={this.send}
             style={styles.btnSend}
           >
             <Image 
@@ -39,6 +79,9 @@ export default class List extends Component {
             />
           </TouchableOpacity>
         </View>
+
+        {this.showLikes(this.state.feed.likes)}
+
         <View style={styles.footerView}>
           <Text style={styles.usernameText}>{this.state.feed.username}</Text>
           <Text style={styles.descriptionText}>{this.state.feed.description}</Text>
@@ -101,5 +144,10 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     fontSize: 15,
     color: '#000000'
+  },
+  textLikes: {
+    paddingLeft: 10,
+    marginBottom: 10,
+    fontWeight: 'bold',   
   },
 });

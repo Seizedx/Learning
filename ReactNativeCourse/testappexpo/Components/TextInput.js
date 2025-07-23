@@ -10,6 +10,8 @@ class TextInputTest extends Component {
         this.state = {
             name: ''
         }
+        //Vincula Ref do TextInput
+        this.xInput = React.createRef();
         // Vincula o método nameCatch ao this
         this.nameCatch = this.nameCatch.bind(this)
     }
@@ -24,14 +26,24 @@ class TextInputTest extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TextInput
-                    style={[styles.input, styles.textAlign]} // Aplica estilos input e textAlign
-                    placeholder='Input something here' // Texto de placeholder
-                    underlineColorAndroid='transparent' // Remove sublinhado no Android
-                    onChangeText={this.nameCatch} // Chama nameCatch ao mudar texto
-                >
-                </TextInput>
-                <Text style={[styles.text, styles.textAlign]}>Welcome {this.state.name}</Text>
+            <TextInput
+                style={styles.input}
+                value={this.state.input}
+                placeholder='Input Something Here'
+                underlineColorAndroid='transparent'
+                onChangeText={this.nameCatch} 
+            />
+            <TextInput //Referência para Próximas
+            ref={this.xInput} //Lembrar de colocar this.xInput = React.createRef(); junto com os bind das funções
+            style={styles.textInput} 
+            placeholder='Type Something'
+            underlineColorAndroid='transparent'
+            onChangeText={this.nameCatch}
+            keyboardType="text" //ou Numeric
+            returnKeyType="done" //ou Next
+            onSubmitEditing={() => this.nextInput.current?.focus()} // caso queira ir para Proxima Input automaticamente
+            />
+            <Text style={[styles.text, styles.textAlign]}>Welcome {this.state.name}</Text>
             </View>
         )
     }
@@ -43,13 +55,13 @@ const styles = StyleSheet.create({
         flex: 1, // Ocupa todo o espaço disponível
     },
     input: {
-        color: 'black', // Cor do texto
-        boxShadow: '0px 0px 5px 0px rgba(129, 7, 7, 0.5)', // Não suportado no React Native
-        borderRadius: 10, // Cantos arredondados
-        marginLeft: 30, // Margem à esquerda
-        marginRight: 30, // Margem à direita
-        fontSize: 20, // Tamanho da fonte
-        padding: 10, // Espaçamento interno
+        color: '#000000',
+        borderWidth: 0.3,
+        opacity: 0.8,
+        borderRadius: 10,
+        fontSize: 20,
+        padding: 10, 
+        // boxShadow: '0px 0px 5px 0px rgba(129, 7, 7, 0.5)', // Funciona no Android
     },
     // Estilo para o Text
     text: {

@@ -13,6 +13,17 @@ const App = () => {
       >
         <Text style={{ color: '#fff' }}>Toque aqui</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.buttonArea}
+        activeOpacity={0.7}
+        onPress={() => console.log('Button Pressed')}
+        onLongPress={() => console.log('Button Long Pressed')}
+        disabled={false}
+        accessibilityLabel="Custom Button"
+      >
+        <Text style={styles.buttonText}>Touch Here</Text>
+      </TouchableOpacity>
     </View>
   );
 };

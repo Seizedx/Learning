@@ -17,16 +17,19 @@ import { View, StatusBar } from 'react-native';
 // import SliderExample from './Components/SliderExample';
 // import SwitchExample from './Components/SwitchExample';
 // import ChallengeApp from './Components/Applications/ChallengeApp';
-import InstaExample from './Components/Applications/InstaExample';
+// import InstaExample from './Components/Applications/InstaExample';
+// import AsyncStorageExample from './Components/AsyncStorageExample';
+import ModalExample from './Components/ModalExample';
+
 
 export class App extends Component {
   render() {
     return (
-      <View style={{ height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100%'}}>
+      <View style={{ backgroundColor:"#828282", height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100%'}}>
 
       <StatusBar
-        barStyle="dark-content"
-        backgroundColor="#ffffff"
+        barStyle="light-content"
+        backgroundColor="#000000"
         hidden={false}
         animated={true}
         translucent={false}
@@ -66,8 +69,11 @@ export class App extends Component {
 
         {/* <ChallengeApp AplicacaoParaTestarFunções /> */}
 
-        <InstaExample />
+        {/* <InstaExample ExemploDeCriaçãoDeAplicação/> */}
 
+        {/* <AsyncStorageExample TestandoAsyncStorage /> */}
+
+        <ModalExample UtilizandoModal />
       </View>
     )
   }
