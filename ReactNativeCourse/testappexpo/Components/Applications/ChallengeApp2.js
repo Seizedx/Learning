@@ -169,7 +169,7 @@ textInput: {
     width: width * 0.85,
     margin: 10,
     backgroundColor: '#ffffff',
-    fontSize: 22,
+    fontSize: 20,
     paddingLeft: 10,
   },
   calculateButtonArea: {

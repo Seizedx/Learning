@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import { View, StatusBar } from 'react-native';
-// import TestImage from './Components/ImageComponent';
-// import ConstructorState from './Components/ConstructorState';
-// import StyleSheetUsage from './Components/StyleSheetList';
-// import DynamicAndStaticSizing from './Components/DynamicAndStaticSizing';
-// import FlexBoxAndAlignments from './Components/FlexBoxAndAlignments';
-// import TextInputTest from './Components/TextInput';
-// import Buttons from './Components/Buttons';
+// import TestImage from './Components/Structure/ImageComponent';
+// import ConstructorState from './Components/Structure/ConstructorState';
+// import StyleSheetUsage from './Components/Structure/StyleSheetList';
+// import DynamicAndStaticSizing from './Components/Structure/DynamicAndStaticSizing';
+// import FlexBoxAndAlignments from './Components/Structure/FlexBoxAndAlignments';
+// import TextInputTest from './Components/Structure/TextInput';
+// import Buttons from './Components/Structure/Buttons';
 // import FortuneCookieApp from './Components/Applications/FortuneCookieApp'
 // import Cronometer from './Components/Applications/Cronometer1';
 // import Cronometer from './Components/Applications/Cronometer';
-// import ScrollView from './Components/ScrollView';
-// import FlatListExample from './Components/FlatList';
+// import ScrollView from './Components/Structure/ScrollView';
+// import FlatListExample from './Components/Structure/FlatList';
 // import ItemDivide from './Components/ItemDivide/Example1';
-// import PickerExample from './Components/PickerExample';
-// import SliderExample from './Components/SliderExample';
-// import SwitchExample from './Components/SwitchExample';
-// import ChallengeApp from './Components/Applications/ChallengeApp';
-// import InstaExample from './Components/Applications/InstaExample';
-// import AsyncStorageExample from './Components/AsyncStorageExample';
-// import ModalExample from './Components/ModalExample';
-import ChallengeApp2 from './Components/Applications/ChallengeApp2';
+// import PickerExample from './Components/Structure/PickerExample';
+// import SliderExample from './Components/Structure/SliderExample';
+// import SwitchExample from './Components/Structure/SwitchExample';
+// import ChallengeApp from './Components/Structure/Applications/ChallengeApp';
+// import InstaExample from './Components/Structure/Applications/InstaExample';
+// import AsyncStorageExample from './Components/Structure/AsyncStorageExample';
+// import ModalExample from './Components/Structure/ModalExample';
+// import ChallengeApp2 from './Components/Applications/ChallengeApp2';
+// import APIUseStateExample from './Components/Hooks/APIUseStateExample';
+// import APIUseEffectExample from './Components/Hooks/APIUseEffectExample';
+// import APIUseMemoExample from './Components/Hooks/APIUseMemoExample';
+// import APIUseRefExample from './Components/Hooks/APIUseRefExample';
+import HTTPRequisition from './Components/Requisitions/HTTPRequisitionExample';
 
 
 export class App extends Component {
@@ -76,7 +81,17 @@ export class App extends Component {
 
         {/* <ModalExample UtilizandoModal /> */}
 
-        <ChallengeApp2 AplicaçãoParaTestarFunções2/>
+        {/* <ChallengeApp2 AplicaçãoParaTestarFunções2/> */}
+
+        {/* <APIUseStateExample TestandoHookAPIUseState/> */}
+
+        {/* <APIUseEffectExample TestandoHookAPIUseEffect /> */}
+
+        {/* <APIUseMemoExample TestandoHookAPIUseMemo /> */}
+
+        {/* <APIUseRefExample TestandoHookAPIUseRef /> */}
+
+        <HTTPRequisition ComoUtilizarRequisições /> 
 
       </View>
     )

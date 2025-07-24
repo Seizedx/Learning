@@ -35,6 +35,7 @@ class TextInputTest extends Component {
             />
             <TextInput //Referência para Próximas
             ref={this.xInput} //Lembrar de colocar this.xInput = React.createRef(); junto com os bind das funções
+            //ou utilizar o useRef, que não precisa criar referência
             style={styles.textInput} 
             placeholder='Type Something'
             underlineColorAndroid='transparent'

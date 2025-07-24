@@ -7,7 +7,7 @@ import {
  Modal,
  
 } from 'react-native'
-import EnterModal from '../src/Modal/EnterModal'
+import EnterModal from '../../src/Modal/EnterModal'
 
 export default class ModalExample extends Component {
   constructor(props) {
