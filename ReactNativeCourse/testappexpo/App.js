@@ -19,7 +19,8 @@ import { View, StatusBar } from 'react-native';
 // import ChallengeApp from './Components/Applications/ChallengeApp';
 // import InstaExample from './Components/Applications/InstaExample';
 // import AsyncStorageExample from './Components/AsyncStorageExample';
-import ModalExample from './Components/ModalExample';
+// import ModalExample from './Components/ModalExample';
+import ChallengeApp2 from './Components/Applications/ChallengeApp2';
 
 
 export class App extends Component {
@@ -28,8 +29,8 @@ export class App extends Component {
       <View style={{ backgroundColor:"#828282", height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100%'}}>
 
       <StatusBar
-        barStyle="light-content"
-        backgroundColor="#000000"
+        barStyle="dark-content"
+        backgroundColor="#818181"
         hidden={false}
         animated={true}
         translucent={false}
@@ -73,7 +74,10 @@ export class App extends Component {
 
         {/* <AsyncStorageExample TestandoAsyncStorage /> */}
 
-        <ModalExample UtilizandoModal />
+        {/* <ModalExample UtilizandoModal /> */}
+
+        <ChallengeApp2 AplicaçãoParaTestarFunções2/>
+
       </View>
     )
   }
