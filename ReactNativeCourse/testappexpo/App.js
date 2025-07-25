@@ -25,17 +25,22 @@ import { View, StatusBar } from 'react-native';
 // import APIUseEffectExample from './Components/Hooks/APIUseEffectExample';
 // import APIUseMemoExample from './Components/Hooks/APIUseMemoExample';
 // import APIUseRefExample from './Components/Hooks/APIUseRefExample';
-import HTTPRequisition from './Components/Requisitions/HTTPRequisitionExample';
+// import HTTPRequisition from './Components/Requisitions/HTTPRequisitionExample';
+import CurrencyConversion from './Components/Applications/CurrencyConversion/CurrencyConversion';
 
 
 export class App extends Component {
   render() {
     return (
-      <View style={{ backgroundColor:"#828282", height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100%'}}>
+      <View 
+      style={
+        { backgroundColor:"#828282", height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100%'}
+      }
+      >
 
       <StatusBar
-        barStyle="dark-content"
-        backgroundColor="#818181"
+        barStyle="light-content"
+        backgroundColor="#000000"
         hidden={false}
         animated={true}
         translucent={false}
@@ -91,7 +96,9 @@ export class App extends Component {
 
         {/* <APIUseRefExample TestandoHookAPIUseRef /> */}
 
-        <HTTPRequisition ComoUtilizarRequisições /> 
+        {/* <HTTPRequisition ComoUtilizarRequisições />  */}
+
+        <CurrencyConversion MaisUmaAplicaçãoParaTestarAPIRequest />
 
       </View>
     )
