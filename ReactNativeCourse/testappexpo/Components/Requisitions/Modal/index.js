@@ -26,12 +26,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    modal1Container: {
-        height: height * 0.8,
-        width: width * 0.9,
+    modal1Container: {    
+        height: height * 0.5,
         backgroundColor: '#121212',
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
+        position: 'relative',
+        top: '100%',
+
     },
     button2: {
         backgroundColor: '#e52246',

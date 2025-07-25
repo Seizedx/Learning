@@ -44,12 +44,13 @@ const styles = StyleSheet.create({
     margin: 15,
     elevation: 2,
   },
+
   title1: {
     padding: 15,
     fontSize: 20,
   },
   image1: {
-    height: height * 0.35,
+    height: height * 0.4,
     width: width * 0.9,
     zIndex: 2,
   },

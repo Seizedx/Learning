@@ -24,10 +24,8 @@ export default function APIExample() {
     },[]);
     return (
       <View style={styles.container}>
-        <Text>Testing HTTP Requisition</Text>
-        <View style={styles.flatlistArea}>
+        <View>
           <FlatList
-            style={styles.flatlist1}
             data={movies}
             keyExtractor={item => String(item.id)}
             renderItem={({item}) => <Movies data={item} />}
@@ -40,12 +38,7 @@ export default function APIExample() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 30,
   },
-  flatlistArea: {
-
-  },
-  flatlist1: {
-
-  }
 });
