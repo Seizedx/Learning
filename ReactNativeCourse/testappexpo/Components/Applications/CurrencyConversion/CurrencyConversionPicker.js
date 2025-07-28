@@ -15,7 +15,7 @@ export function PickerItem(props) {
 
     return (
         <Picker
-        selectedValue={props.selectedCurrency}
+        selectedValue={props.currencySelected}
         onValueChange={(value) => props.onChange(value)}
         >
             {currencyItem}

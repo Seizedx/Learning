@@ -26,7 +26,8 @@ import { View, StatusBar } from 'react-native';
 // import APIUseMemoExample from './Components/Hooks/APIUseMemoExample';
 // import APIUseRefExample from './Components/Hooks/APIUseRefExample';
 // import HTTPRequisition from './Components/Requisitions/HTTPRequisitionExample';
-import CurrencyConversion from './Components/Applications/CurrencyConversion/CurrencyConversion';
+// import CurrencyConversion from './Components/Applications/CurrencyConversion/CurrencyConversion';
+import CEPFinder from './Components/Applications/CEPFinder/CEPFinder';
 
 
 export class App extends Component {
@@ -98,7 +99,9 @@ export class App extends Component {
 
         {/* <HTTPRequisition ComoUtilizarRequisições />  */}
 
-        <CurrencyConversion MaisUmaAplicaçãoParaTestarAPIRequest />
+        {/* <CurrencyConversion MaisUmaAplicaçãoParaTestarAPIRequest /> */}
+
+        <CEPFinder APPCEPFINDERPRACTICE />
 
       </View>
     )

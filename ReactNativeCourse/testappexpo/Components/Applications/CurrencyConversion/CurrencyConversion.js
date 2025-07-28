@@ -8,6 +8,8 @@ import {
     TextInput,
     TouchableOpacity,
     ScrollView,
+    Alert,
+    Keyboard,
 } from 'react-native';
 import { PickerItem } from './CurrencyConversionPicker';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -19,6 +21,9 @@ export default function CurrencyConversion() {
     const [loading, setLoading] = useState(true);
     const [currency, setCurrency] = useState([]);
     const [currencySelected, setCurrencySelected] = useState(null);
+    const [currencyValue, setCurrencyValue] = useState(null);
+    const [currencyConvertedValue, setCurrencyConvertedValue] = useState(0);
+    const [currencyBValue, setCurrencyBValue] = useState('');
  
     //chama quando componente é aberto, está com o asynsStorage
     useEffect(() => {
@@ -41,6 +46,23 @@ export default function CurrencyConversion() {
         loadCurrency();
     }, []);
  
+    async function convert() {
+        if( currencyBValue === 0 ||
+            currencyBValue ==='' ||
+            currencySelected === null ||
+            isNaN(currencyBValue)
+        ) {
+            Alert.alert('Invalid Values', 'Check values and try again.');
+            setCurrencyConvertedValue(0);
+            return;
+        }
+        const response = await API.get(`/all/${currencySelected}-BRL`);
+        let result = Number(currencyBValue) * response.data[currencySelected].ask;
+        setCurrencyConvertedValue(`${result.toLocaleString("pt-BR", {style: "currency", currency: "BRL" })}`);
+        setCurrencyValue(response.data[currencySelected].ask);
+        Keyboard.dismiss();
+    }
+
     if(loading) {
         return (
             <View style={styles.loadingView}>
@@ -66,6 +88,7 @@ export default function CurrencyConversion() {
                             currencySelected={currencySelected}
                             onChange={(currency) => {
                                 setCurrencySelected(currency);
+                                setCurrencyConvertedValue(0);
                             }}
                             />
                     </View>
@@ -75,19 +98,30 @@ export default function CurrencyConversion() {
                                 style={styles.textInput1}
                                 placeholder='Input the Value to be Converted'
                                 keyboardType='numeric'
+                                value={currencyBValue}
+                                onChangeText={(value) => {
+                                    setCurrencyBValue(value);
+                                    setCurrencyConvertedValue(0);
+                                }}
                                 />
                         </View>
                         <TouchableOpacity
                             style={styles.button1}
-                            onPress={() => setCurrencySelected}
+                            onPress={convert}
                         >
                             <Text style={styles.button1Text}>Convert</Text>
                         </TouchableOpacity>
-                    <View style={styles.resultArea}>
-                        <Text style={styles.convertedValue}> Howmany BTCs</Text>
-                        <Text style={styles.convertedValue1}> Corresponds to</Text>
-                        <Text style={styles.convertedValue}> r$ 1000,</Text>
-                    </View>
+                        {currencyConvertedValue !== 0 && 
+                            (
+                                <View style={styles.resultArea}>
+                                    <Text style={styles.priceRightNow}>1.00{currencySelected} Right Now = {currencyValue}BRL</Text>
+                                    <Text style={styles.convertionTitle}>Convertion:</Text>
+                                    <Text style={styles.convertedValue}>{currencyBValue}{currencySelected}</Text>
+                                    <Text style={styles.equalTo}> Is equal to:</Text>
+                                    <Text style={styles.convertedValue}>{currencyConvertedValue}</Text>
+                                </View>
+                            )
+                        }
                     </View>
                 </ScrollView>
             </View>
@@ -98,8 +132,10 @@ export default function CurrencyConversion() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#000000',
     },
     card: {
+        marginTop: 30,
         width: '100%',
         alignItems: 'center',
         // transform: 'translate(0%, 40%)',
@@ -187,16 +223,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 24,
+        marginBottom: 50,
+    },
+    priceRightNow: {
+        fontSize: 16,
+    },
+    convertionTitle: {
+        marginTop: 20,
+        fontSize: 20,
+        fontWeight: 700,
     },
     convertedValue: {
+        marginTop: 5,
+        fontSize: 25,
+        color: '#00aa11',
+    },
+    equalTo: {
+        marginTop: 20,
         fontSize: 20,
         color: '#000000',
-        fontWeight: 700,
-    },
-    convertedValue1: {
-        fontSize: 17,
-        color: '#000000',
-        fontWeight: 700,
-        padding: 10,
+        fontWeight: 'bold',
     },
 });
