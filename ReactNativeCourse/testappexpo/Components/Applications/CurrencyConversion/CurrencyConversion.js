@@ -12,7 +12,6 @@ import {
     Keyboard,
 } from 'react-native';
 import { PickerItem } from './CurrencyConversionPicker';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API } from './CurrencyConversionAPIBaseURL';
  
 

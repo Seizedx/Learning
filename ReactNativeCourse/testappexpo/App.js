@@ -7,27 +7,31 @@ import { View, StatusBar } from 'react-native';
 // import FlexBoxAndAlignments from './Components/Structure/FlexBoxAndAlignments';
 // import TextInputTest from './Components/Structure/TextInput';
 // import Buttons from './Components/Structure/Buttons';
-// import FortuneCookieApp from './Components/Applications/FortuneCookieApp'
-// import Cronometer from './Components/Applications/Cronometer1';
-// import Cronometer from './Components/Applications/Cronometer';
+// import FortuneCookieApp from './Components/Applications/FortuneCookie/FortuneCookieApp'
+// import Cronometer from './Components/Applications/Cronometer/Cronometer1';
+// import Cronometer from './Components/Applications/Cronometer/Cronometer';
 // import ScrollView from './Components/Structure/ScrollView';
 // import FlatListExample from './Components/Structure/FlatList';
 // import ItemDivide from './Components/ItemDivide/Example1';
 // import PickerExample from './Components/Structure/PickerExample';
 // import SliderExample from './Components/Structure/SliderExample';
 // import SwitchExample from './Components/Structure/SwitchExample';
-// import ChallengeApp from './Components/Structure/Applications/ChallengeApp';
-// import InstaExample from './Components/Structure/Applications/InstaExample';
+// import ChallengeApp from './Components/Structure/Applications/ChallengeApps/ChallengeApp';
+// import InstaExample from './Components/Structure/Applications/ChallengeApps/InstaExample';
 // import AsyncStorageExample from './Components/Structure/AsyncStorageExample';
 // import ModalExample from './Components/Structure/ModalExample';
-// import ChallengeApp2 from './Components/Applications/ChallengeApp2';
+// import ChallengeApp2 from './Components/Applications/ChallengeApps/ChallengeApp2';
 // import APIUseStateExample from './Components/Hooks/APIUseStateExample';
 // import APIUseEffectExample from './Components/Hooks/APIUseEffectExample';
 // import APIUseMemoExample from './Components/Hooks/APIUseMemoExample';
 // import APIUseRefExample from './Components/Hooks/APIUseRefExample';
 // import HTTPRequisition from './Components/Requisitions/HTTPRequisitionExample';
 // import CurrencyConversion from './Components/Applications/CurrencyConversion/CurrencyConversion';
-import CEPFinder from './Components/Applications/CEPFinder/CEPFinder';
+// import CEPFinder from './Components/Applications/CEPFinder/CEPFinder';
+// import ChallengeApp3 from './Components/Applications/ChallengeApps/ChallengeApp3';
+// import FirstStepsAnimation from './Components/Animations/TimingAnimation';
+// import SequenceAnimation from './Components/Animations/SequenceAnimation';
+import ParallelAnimation from './Components/Animations/ParallelAnimation';
 
 
 export class App extends Component {
@@ -101,7 +105,15 @@ export class App extends Component {
 
         {/* <CurrencyConversion MaisUmaAplicaçãoParaTestarAPIRequest /> */}
 
-        <CEPFinder APPCEPFINDERPRACTICE />
+        {/* <CEPFinder APPCEPFINDERPRACTICE /> */}
+
+        {/* <ChallengeApp3 AplicativoDeContadorDeRestaurante /> */}
+
+        {/* <FirstStepsAnimation UtilizandoAnimations /> */}
+
+        {/* <SequenceAnimation AnimacoesEmSequencia/> */}
+
+        <ParallelAnimation AnimacoesEmParalelo />
 
       </View>
     )

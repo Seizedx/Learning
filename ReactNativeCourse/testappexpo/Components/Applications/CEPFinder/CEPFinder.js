@@ -6,17 +6,22 @@ import {
     View,
     ActivityIndicator,
     SafeAreaView,
+    ScrollView,
     TextInput,
     TouchableOpacity,
-
+    Alert,
+    Keyboard,
+    Dimensions
 } from 'react-native';
 import { API } from './ViaCEPAPI';
- 
+const { width, height } = Dimensions.get('window');
  
 export default function CEPFinder() {
     const [inputCEP, setInputCEP] = useState('');
     const [loading, setLoading] = useState(true);
     const textInputCEP = useRef(null);
+    const [searchInfo, setSearchInfo] = useState(null);
+    const [result, setResult] = useState('');
 
  
     //chama quando componente é aberto, está com o asynsStorage
@@ -29,6 +34,26 @@ export default function CEPFinder() {
         getStorage();
         // return() => {} //Funciona como um ComponentWillUnmount
     }, []);
+
+    async function search() {
+        if( inputCEP === 0 ||
+            inputCEP ==='' ||
+            inputCEP === null
+        ) {
+            Alert.alert('Invalid CEP Number', 'Check number and try again.');
+            return;
+        } else {
+            const clearCEP = inputCEP.replace(/\D/g, '');
+            try{
+                const response = await API.get(`/${clearCEP}/json/`);
+                setSearchInfo(response.data);
+                Keyboard.dismiss();
+            }catch (error) {
+                Alert.alert('Invalid CEP Number', 'Check number and try again.');
+                return;
+            }
+        }
+    }
  
     if(loading) {
         return (
@@ -43,46 +68,60 @@ export default function CEPFinder() {
     } else {  
         return (
             <SafeAreaView style={styles.container}>
-            <View style={styles.mainView}>
-                    <Text style={styles.mainTitle}>CEP Finder</Text>
-                    <Text style={styles.mainSubtitle}>Which CEP are You Looking For?</Text>
-                    <TextInput
-                    ref={textInputCEP}
-                    value={inputCEP}
-                    style={styles.textInput1} 
-                    placeholder='Input the CEP Number'
-                    underlineColorAndroid='transparent'
-                    onChangeText={(text) => setInputCEP(text)}
-                    />
-            </View>
-            <View style={styles.buttonView}>
-                <TouchableOpacity
-                    style={styles.button1Area}
-                    activeOpacity={0.7}
-                    onPress={() => console.log('Button Pressed')}
+                <ScrollView
+                showsHorizontalScrollIndicator={false}
                 >
-                    <Text style={styles.buttonText}>Search</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.button2Area}
-                    activeOpacity={0.7}
-                    onPress={() => {
-                        setInputCEP('');
-                        textInputCEP.current?.focus();
-                    }}
-                >
-                    <Text style={styles.buttonText}>Clear</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.resultArea}>
-                <Text style={styles.resultText}>CEP: ----------</Text>
-                <Text style={styles.resultText}>Logradouro: ----------</Text>
-                <Text style={styles.resultText}>Bairro: ----------</Text>
-                <Text style={styles.resultText}>Cidade: ----------</Text>
-                <Text style={styles.resultText}>Estado: ----------</Text>
-
-            </View>
+                    <View style={styles.mainView}>
+                        <Text style={styles.mainTitle}>CEP Finder</Text>
+                        <Text style={styles.mainSubtitle}>Which CEP are You Looking For?</Text>
+                        <TextInput
+                        ref={textInputCEP}
+                        value={inputCEP}
+                        style={styles.textInput1} 
+                        placeholder='Input the CEP Number'
+                        underlineColorAndroid='transparent'
+                        keyboardType='numeric'
+                        onChangeText={(text) => {
+                            setInputCEP(text);
+                            setResult('');
+                            setSearchInfo(null);
+                        }}
+                        />
+                    </View>
+                    <View style={styles.buttonView}>
+                        <TouchableOpacity
+                            style={styles.button1Area}
+                            activeOpacity={0.7}
+                            onPress={search}
+                        >
+                            <Text style={styles.buttonText}>Search</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.button2Area}
+                            activeOpacity={0.7}
+                            onPress={() => {
+                                setInputCEP('');
+                                setResult('');
+                                setSearchInfo(null);
+                                textInputCEP.current?.focus();
+                            }}
+                        >
+                            <Text style={styles.buttonText}>Clear</Text>
+                        </TouchableOpacity>
+                    </View>
+                    {searchInfo &&
+                        <View style={styles.resultArea}>
+                            <Text style={styles.resultText}>CEP: {searchInfo.cep}</Text>
+                            <Text style={styles.resultText}>Logradouro: {searchInfo.logradouro}</Text>
+                            <Text style={styles.resultText}>Complemento: {searchInfo.complemento}</Text>
+                            <Text style={styles.resultText}>Bairro: {searchInfo.bairro}</Text>
+                            <Text style={styles.resultText}>Cidade: {searchInfo.localidade}</Text>
+                            <Text style={styles.resultText}>Estado: {searchInfo.uf}</Text>
+                        </View>
+                    }
+                </ScrollView>
             </SafeAreaView>
+
         )
     }
 }
@@ -91,6 +130,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        boxSizing: 'border-box',
     },
     loadingView: {
         flex: 1,
@@ -101,15 +141,16 @@ const styles = StyleSheet.create({
         transform: 'scale(5)',
     },
     mainView: {
-        width: '100%',
         alignItems: 'center',
+        width: width,
 
     },
     mainTitle: {
         marginTop: 50,
-        fontSize: 45,
+        fontSize: 66,
         fontWeight: 'bold',
-        textShadowColor: '#F4F455',
+        textShadowColor: '#d9ff03',
+        textShadowRadius: 10,
     },
     mainSubtitle: {
         marginTop: 20,
@@ -120,14 +161,18 @@ const styles = StyleSheet.create({
         marginTop: 20,
         textAlign: 'center',
         fontSize: 20,
-        padding: 5,
-        width: '90%',
+        padding: 10,
+        width: width * 0.9,
+        borderWidth: 1,
+        borderColor: '#ffffff4c',
+        opacity: 1,
+        borderRadius: 10,
     },
     buttonView: {
         marginTop: 20,
-        width: '90%',
         flexDirection: 'row',
         justifyContent: 'space-around',
+        width: width * 0.9,
     },
     button1Area: {
         padding: 15,
@@ -149,12 +194,12 @@ const styles = StyleSheet.create({
     },
     resultArea: {
         marginTop: 100,
-        width: '80%',
+        alignItems: 'center',
+        width: width * 0.9,
     },
     resultText: {
         textAlign: 'center',
         fontSize: 25,
         color: '#ffffff',
     },
-
 });

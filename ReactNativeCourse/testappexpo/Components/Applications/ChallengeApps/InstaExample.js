@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, Image, TouchableOpacity, FlatList } from 'react-native'
-import List from '../../src/List';
+import List from '../../../src/List';
 
 export default class InstaExample extends Component {
   constructor(props) {
