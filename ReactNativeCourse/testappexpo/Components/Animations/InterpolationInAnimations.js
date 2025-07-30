@@ -5,48 +5,46 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { height, width } = Dimensions.get('window');
 
-export default function ParallelAnimation() {
+export default function InterpolationInAnimations() {
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(true);
 
   const animatedWidth = useRef(new Animated.Value(1)).current;
   const animatedHeight = useRef(new Animated.Value(1)).current;
-  const animatedBorderRadius = useRef(new Animated.Value(20)).current;
+  // const animatedBorderRadius = useRef(new Animated.Value(20)).current;
   const animatedFontSize = useRef(new Animated.Value(1)).current;
-  const animatedOpacity = useRef(new Animated.Value(0)).current;
+  // const animatedOpacity = useRef(new Animated.Value(0)).current;
 
+  let widthPercentage = animatedWidth.interpolate({
+    inputRange: [1, 100],
+    outputRange: ['1%', '100%']
+  });
+
+  let heightPercentage = animatedWidth.interpolate({
+    inputRange: [1, 100],
+    outputRange: ['1%', '100%']
+  });
 
   // Animations
-  useEffect(() => {
-    Animated.parallel([
-      Animated.timing(animatedOpacity, {
-        toValue: 1,
-        duration: 4000,
-        useNativeDriver: true,
-      }),
-
-      Animated.timing(animatedWidth, {
-        toValue: 300,
-        duration: 2000,
-        useNativeDriver: false,
-      }),
-      Animated.timing(animatedHeight, {
-        toValue: 300,
-        duration: 2000,
-        useNativeDriver: false,
-      }),
-      Animated.timing(animatedBorderRadius, {
-        toValue: 300,
-        duration: 2000,
-        useNativeDriver: false,
-      }),
-      Animated.timing(animatedFontSize, {
-        toValue: 50,
-        duration: 2000,
-        useNativeDriver: false,
-      }),
-    ]).start();
-  }, []);
+useEffect(() => {
+  Animated.parallel([
+    Animated.timing(animatedFontSize, {
+      toValue: 100,
+      duration: 5000,
+      useNativeDriver: false,
+    }),
+    Animated.timing(animatedWidth, {
+      toValue: 100,
+      duration: 5000,
+      useNativeDriver: false,
+    }),
+    Animated.timing(animatedHeight, {
+      toValue: 100,
+      duration: 5000,
+      useNativeDriver: false,
+    }),
+  ]).start(({finished}) => {console.log({finished});});
+}, []);
 
   // Load name from AsyncStorage
   useEffect(() => {
@@ -72,20 +70,23 @@ export default function ParallelAnimation() {
     <View style={styles.container}>
       <Animated.View
         style={{
-          opacity: animatedOpacity,
+          
         }}
       >
         <Animated.View
           style={[
             styles.animationView,
             {
-              width: animatedWidth,
-              height: animatedHeight,
-              borderRadius: animatedBorderRadius,
+              width: widthPercentage,
+              height: heightPercentage,
+
             },
           ]}
         >
-          <Animated.Text style={[styles.textAnimation, { fontSize: animatedFontSize }]}>
+          <Animated.Text style={[styles.textAnimation, {
+            fontSize: animatedFontSize,
+            }
+            ]}>
             Loading
           </Animated.Text>
         </Animated.View>

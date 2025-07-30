@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { height, width } = Dimensions.get('window');
 
-export default function ParallelAnimation() {
+export default function LoopAnimation() {
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -14,17 +14,29 @@ export default function ParallelAnimation() {
   const animatedBorderRadius = useRef(new Animated.Value(20)).current;
   const animatedFontSize = useRef(new Animated.Value(1)).current;
   const animatedOpacity = useRef(new Animated.Value(0)).current;
+  const animatedRotate = useRef(new Animated.Value(0)).current;
+
+  // Interpolation for rotation
+  const rotateInterpolation = animatedRotate.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
 
 
   // Animations
-  useEffect(() => {
+useEffect(() => {
+  Animated.sequence([
     Animated.parallel([
-      Animated.timing(animatedOpacity, {
+        Animated.timing(animatedOpacity, {
+          toValue: 1,
+          duration: 2000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(animatedRotate, {
         toValue: 1,
-        duration: 4000,
+        duration: 2000,
         useNativeDriver: true,
       }),
-
       Animated.timing(animatedWidth, {
         toValue: 300,
         duration: 2000,
@@ -41,12 +53,32 @@ export default function ParallelAnimation() {
         useNativeDriver: false,
       }),
       Animated.timing(animatedFontSize, {
-        toValue: 50,
+        toValue: 70,
         duration: 2000,
         useNativeDriver: false,
       }),
-    ]).start();
-  }, []);
+    ]),
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(animatedFontSize, {
+          toValue: 70,
+          duration: 0,
+          useNativeDriver: false,
+        }),
+        Animated.timing(animatedFontSize, {
+          toValue: 60,
+          duration: 500,
+          useNativeDriver: false,
+        }),
+        Animated.timing(animatedFontSize, {
+          toValue: 70,
+          duration: 500,
+          useNativeDriver: false,
+        }),
+      ])
+    ),
+  ]).start();
+}, []);
 
   // Load name from AsyncStorage
   useEffect(() => {
@@ -73,6 +105,7 @@ export default function ParallelAnimation() {
       <Animated.View
         style={{
           opacity: animatedOpacity,
+          transform: [{ rotate: rotateInterpolation }],
         }}
       >
         <Animated.View
@@ -85,7 +118,10 @@ export default function ParallelAnimation() {
             },
           ]}
         >
-          <Animated.Text style={[styles.textAnimation, { fontSize: animatedFontSize }]}>
+          <Animated.Text style={[styles.textAnimation, {
+            fontSize: animatedFontSize
+            }
+            ]}>
             Loading
           </Animated.Text>
         </Animated.View>

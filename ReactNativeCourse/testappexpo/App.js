@@ -31,7 +31,10 @@ import { View, StatusBar } from 'react-native';
 // import ChallengeApp3 from './Components/Applications/ChallengeApps/ChallengeApp3';
 // import FirstStepsAnimation from './Components/Animations/TimingAnimation';
 // import SequenceAnimation from './Components/Animations/SequenceAnimation';
-import ParallelAnimation from './Components/Animations/ParallelAnimation';
+// import ParallelAnimation from './Components/Animations/ParallelAnimation';
+// import LoopAnimation from './Components/Animations/LoopAnimation';
+// import InterpolationInAnimations from './Components/Animations/InterpolationInAnimations';
+import UsingAnimatable from './Components/Animations/UsingAnimatable';
 
 
 export class App extends Component {
@@ -113,7 +116,13 @@ export class App extends Component {
 
         {/* <SequenceAnimation AnimacoesEmSequencia/> */}
 
-        <ParallelAnimation AnimacoesEmParalelo />
+        {/* <ParallelAnimation AnimacoesEmParalelo /> */}
+
+        {/* <LoopAnimation AnimaçoesEmLoop  /> */}
+
+        {/* <InterpolationInAnimations AdicionandoModificacoesEmAnimações /> */}
+
+        <UsingAnimatable UtilizandoAnimatable />
 
       </View>
     )
