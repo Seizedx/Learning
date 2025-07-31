@@ -34,7 +34,9 @@ import { View, StatusBar } from 'react-native';
 // import ParallelAnimation from './Components/Animations/ParallelAnimation';
 // import LoopAnimation from './Components/Animations/LoopAnimation';
 // import InterpolationInAnimations from './Components/Animations/InterpolationInAnimations';
-import UsingAnimatable from './Components/Animations/UsingAnimatable';
+// import UsingAnimatable from './Components/Animations/UsingAnimatable';
+// import VectorIcons from './Components/Icons/VectorIcons';
+import StackNavigation from './Components/Navigation/StackNavigation';
 
 
 export class App extends Component {
@@ -122,7 +124,11 @@ export class App extends Component {
 
         {/* <InterpolationInAnimations AdicionandoModificacoesEmAnimações /> */}
 
-        <UsingAnimatable UtilizandoAnimatable />
+        {/* <UsingAnimatable UtilizandoAnimatable /> */}
+
+        {/* <VectorIcons TestandoIcons /> */}
+
+        <StackNavigation ComecandoAUtilizarNavigation />
 
       </View>
     )
