@@ -18,6 +18,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import About from '../Navigation/src/pages/About'
 import HomePage from '../Navigation/src/pages/HomePage';
+import Contact from '../Navigation/src/pages/Contact'
  
 const Stack = createStackNavigator();
  
@@ -44,6 +45,19 @@ export default function App() {
                         component={About}
                         options={{
                             title: 'Initial Page',
+                            headerStyle: {
+                                backgroundColor: '#932424',
+                            },
+                            headerTintColor: 'red',
+                            headerMode: 'screen',
+                            headerTitleAlign: 'center',
+                        }} 
+                        />
+                    <Stack.Screen
+                        name="Contact"
+                        component={Contact}
+                        options={{
+                            title: 'Contact',
                             headerStyle: {
                                 backgroundColor: '#932424',
                             },

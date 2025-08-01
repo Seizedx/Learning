@@ -1,41 +1,39 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
     Text,
     StyleSheet,
     View,
     Button,
+
 } from 'react-native';
+import { StackActions, useNavigation } from '@react-navigation/native';         //////////////////////////////
 
-import { useNavigation, useRoute } from '@react-navigation/native';  /////////////////
-
-
-
-export default function About() {
-    
-    const route = useRoute();        ////////////////////NECESSÁRIO UTILIZANDO HOOK useRoute
+export default function Contact() {
     const navigation = useNavigation();
-    
-    useLayoutEffect(() => { ///                  ///////// ALTERAR OPTIONS 
-        navigation.setOptions({
-            title: route.params.nome === '' ? 'About Page' : route.params.nome
-        })
-    }, [navigation]);
 
-
+    function navigateAbout() {
+        navigation.navigate('About', {nome: 'Matheus', email: 'matheus@teste.com'})
+    }
+    function handleHome() {
+        navigation.dispatch(StackActions.popToTop());
+    }
         return (
             <View style={styles.container}>
                 <View>
-                    <Text style={styles.mainTitle}>About Screen</Text>
+                    <Text style={styles.mainTitle}>Home Screen</Text>
                     <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
-                    <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
-                    <Text style={styles.mainSubtitle}>{route.params?.email}</Text>
-                    <Text style={styles.mainSubtitle}>{route.params?.nome}</Text>
-                    <Button
-                        title="Contact" onPress={() => {
-                            navigation.navigate('Contact');
-                        }}
-                    />
                 </View>
+                <Button
+                    title="About" onPress={navigateAbout}
+                />
+                <Button
+                    color={'red'}
+                    title="Go Back" onPress={() => navigation.goBack()}
+                />
+                <Button
+                    color={'red'}
+                    title="Go Back to Start" onPress={handleHome}
+                />
             </View>
         )
     }
@@ -57,7 +55,6 @@ const styles = StyleSheet.create({
         marginRight: 30,
     }
 });
-
 
 //Componentes Principais:
 
