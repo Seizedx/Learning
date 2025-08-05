@@ -37,7 +37,8 @@ import { View, StatusBar } from 'react-native';
 // import UsingAnimatable from './Components/Animations/UsingAnimatable';
 // import VectorIcons from './Components/Icons/VectorIcons';
 // import StackNavigation from './Components/Navigation/StackNavigation';
-import UsingTabs from './Components/Navigation/UsingTabs';
+// import UsingTabs from './Components/Navigation/UsingTabs';
+import UsingStackAndTabs from './Components/Navigation/UsingStackAndTabs';
 
 
 export class App extends Component {
@@ -131,7 +132,9 @@ export class App extends Component {
 
         {/* <StackNavigation ComecandoAUtilizarNavigation /> */}
 
-        <UsingTabs UtilizandoTabs />
+        {/* <UsingTabs UtilizandoTabs /> */}
+
+        <UsingStackAndTabs UtilizandoStackETabsAoMesmoTempo />
 
       </View>
     )
