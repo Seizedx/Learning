@@ -1,76 +1,67 @@
-// npm install @react-navigation/native @react-navigation/stack @react-navigation/bottom-tabs
-// Dependências adicionais: npm install react-native-screens react-native-safe-area-context.
-
-// Documentação oficial do React Navigation: https://reactnavigation.org/docs/getting-started
-// Guia de instalação: https://reactnavigation.org/docs/setup
-// Diretório de ícones (para headers): https://icons.expo.fyi/ (com @expo/vector-icons)
-
 import React, { useEffect, useState } from 'react';
 import { 
     Text,
     StyleSheet,
     View,
-    
+    Button,
+
 } from 'react-native';
+import { StackActions, useNavigation } from '@react-navigation/native';         //////////////////////////////
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+export default function Contact() {
+    const navigation = useNavigation();
 
-import About from './src/pages/AboutStack'
-import HomePage from './src/pages/HomePageStack';
-import Contact from './src/pages/ContactStack'
- 
-const Stack = createStackNavigator();
- 
-export default function App() {
+    function navigateAbout() {
+        navigation.navigate('About', {nome: 'Matheus', email: 'matheus@teste.com'})
+    }
+    function handleHome() {
+        navigation.dispatch(StackActions.popToTop());
+    }
         return (
-            <NavigationContainer>
-                <Stack.Navigator
-                    initialRouteName='HomePage'
-                >
-                    <Stack.Screen
-                        name="HomePage"
-                        component={HomePage}
-                        options={{
-                            title: 'Initial Page',
-                            headerStyle: {
-                                backgroundColor: '#a5a5a5',
-                            },
-                            headerTintColor: 'red',
-                            headerShown: false,
-                        }} 
-                        />
-                    <Stack.Screen
-                        name="About"
-                        component={About}
-                        options={{
-                            title: 'Initial Page',
-                            headerStyle: {
-                                backgroundColor: '#932424',
-                            },
-                            headerTintColor: 'red',
-                            headerMode: 'screen',
-                            headerTitleAlign: 'center',
-                        }} 
-                        />
-                    <Stack.Screen
-                        name="Contact"
-                        component={Contact}
-                        options={{
-                            title: 'Contact',
-                            headerStyle: {
-                                backgroundColor: '#932424',
-                            },
-                            headerTintColor: 'red',
-                            headerMode: 'screen',
-                            headerTitleAlign: 'center',
-                        }} 
-                        />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <View style={styles.container}>
+                <View>
+                    <Text style={styles.mainTitle}>Contact</Text>
+                    <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                </View>
+                <View style={styles.button}>
+                <Button
+                    title="About" onPress={navigateAbout}
+                />
+                <Button
+                    color={'red'}
+                    title="Go Back" onPress={() => navigation.goBack()}
+                />
+                <Button
+                    color={'red'}
+                    title="Go Back to Start" onPress={handleHome}
+                />
+                </View>
+            </View>
         )
     }
  
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        flexWrap: 'wrap',
+    },
+    mainTitle: {
+        marginTop: 50,
+        fontSize: 50,
+        textAlign: 'center',
+    },
+    mainSubtitle: {
+        fontSize: 20,
+        textAlign: 'center',
+        marginLeft: 30,
+        marginRight: 30,
+    },
+    button: {
+        marginTop: 20,
+        gap: 10,
+    }
+});
 
 //Componentes Principais:
 

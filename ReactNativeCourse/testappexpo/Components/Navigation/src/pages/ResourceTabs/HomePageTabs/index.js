@@ -1,38 +1,29 @@
-import React, { useEffect, useState } from 'react';
 import { 
     Text,
     StyleSheet,
     View,
     Button,
-
 } from 'react-native';
-import { StackActions, useNavigation } from '@react-navigation/native';         //////////////////////////////
+import { useNavigation } from '@react-navigation/native';
 
-export default function Contact() {
+export default function HomePage() {
     const navigation = useNavigation();
 
     function navigateAbout() {
-        navigation.navigate('About', {nome: 'Matheus', email: 'matheus@teste.com'})
-    }
-    function handleHome() {
-        navigation.dispatch(StackActions.popToTop());
+        navigation.navigate('About');
     }
         return (
             <View style={styles.container}>
                 <View>
                     <Text style={styles.mainTitle}>Home Screen</Text>
                     <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                    <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                    <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
                 </View>
                 <Button
-                    title="About" onPress={navigateAbout}
-                />
-                <Button
-                    color={'red'}
-                    title="Go Back" onPress={() => navigation.goBack()}
-                />
-                <Button
-                    color={'red'}
-                    title="Go Back to Start" onPress={handleHome}
+                    title={'About'}
+                    onPress={navigateAbout}
+                    color={'blue'}
                 />
             </View>
         )
@@ -43,8 +34,10 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         flexWrap: 'wrap',
+        gap: 15,
     },
     mainTitle: {
+        marginTop: 50,
         fontSize: 50,
         textAlign: 'center',
     },
