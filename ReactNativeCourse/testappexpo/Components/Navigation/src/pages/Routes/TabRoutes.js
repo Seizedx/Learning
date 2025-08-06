@@ -4,9 +4,6 @@
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import StackRoutes from './StackRoutes';
-import DrawerRoutes from './DrawerRoutes';
-import TabRoutes from './TabRoutes';
 import HomePage from '../ResourceClean/Home';
 import About from '../ResourceClean/About';
 import Contact from '../ResourceClean/Contact';
@@ -19,7 +16,6 @@ const Tab = createBottomTabNavigator();
 export default function Routes() {
         return (
                 <Tab.Navigator
-                    initialRouteName='StackRoutes' 
                     screenOptions={{
                             headerShown: false,
                             tabBarHideOnKeyboard: true,

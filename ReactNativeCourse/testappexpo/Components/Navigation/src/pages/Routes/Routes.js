@@ -90,7 +90,7 @@ export default function Routes() {
                         options={{
                             tabBarLabel: 'Stack',
                             tabBarIcon: ({color, size}) => {
-                                return <MaterialCommunityIcons name='home' color={color} size={size} />
+                                return <MaterialCommunityIcons name='account-heart-outline' color={color} size={size} />
                             },
                         }}
                         />
@@ -98,9 +98,9 @@ export default function Routes() {
                         name="TabRoutes"
                         component={TabRoutes}
                         options={{
-                            tabBarLabel: 'Stack',
+                            tabBarLabel: 'Tab',
                             tabBarIcon: ({color, size}) => {
-                                return <MaterialCommunityIcons name='home' color={color} size={size} />
+                                return <MaterialCommunityIcons name='account-circle' color={color} size={size} />
                             },
                         }}
                         />

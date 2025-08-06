@@ -4,7 +4,7 @@ import {
     StyleSheet,
     View,
     Button,
-
+    ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';         //////////////////////////////
 
@@ -15,21 +15,25 @@ export default function Contact() {
         navigation.navigate('About')
     }
         return (
-            <View style={styles.container}>
-                <View>
-                    <Text style={styles.mainTitle}>Contact</Text>
-                    <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+            <ScrollView>
+                <View style={styles.container}>
+                    <View>
+                        <Text style={styles.mainTitle}>Contact</Text>
+                        <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                        <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                        <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                    </View>
+                    <View style={styles.button}>
+                    <Button
+                        title="About" onPress={navigateAbout}
+                    />
+                    <Button
+                        color={'red'}
+                        title="Go Back" onPress={() => navigation.goBack()}
+                    />
+                    </View>
                 </View>
-                <View style={styles.button}>
-                <Button
-                    title="About" onPress={navigateAbout}
-                />
-                <Button
-                    color={'red'}
-                    title="Go Back" onPress={() => navigation.goBack()}
-                />
-                </View>
-            </View>
+            </ScrollView>
         )
     }
  

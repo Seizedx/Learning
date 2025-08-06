@@ -14,6 +14,7 @@ import About from '../ResourceClean/About';
 import Contact from '../ResourceClean/Contact';
 import Details from '../ResourceClean/Details';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import CustomDrawer from '../../../CustomDrawer';
  
 
 const Drawer = createDrawerNavigator(); 
@@ -22,7 +23,14 @@ export default function Routes() {
         return (
                 <Drawer.Navigator
                     initialRouteName='Home' 
+                    drawerContent={CustomDrawer}
                     screenOptions={{
+                            // drawerStyle: {
+                            //     backgroundColor: '#424242',
+                            // },
+                            // drawerActiveBackgroundColor: '#cfcfcf',
+                            // drawerInactiveTintColor: '#ffffff',
+                            // drawerActiveTintColor: '#f24343',
 
                         }}
                 >
@@ -30,8 +38,8 @@ export default function Routes() {
                         name="Home"
                         component={HomePage}
                         options={{
-                            tabBarLabel: 'Início',
-                            tabBarIcon: ({color, size}) => {
+                            title: 'Início',
+                            drawerIcon: ({color, size}) => {
                                 return <MaterialCommunityIcons name='home' color={color} size={size} />
                             },
                         }}
@@ -40,19 +48,19 @@ export default function Routes() {
                         name="About"
                         component={About}
                         options={{
-                            tabBarLabel: 'Sobre',
-                            tabBarIcon: ({color, size}) => {
+                            title: 'Sobre',
+                            drawerIcon: ({color, size}) => {
                                 return <MaterialCommunityIcons name='information' color={color} size={size} />
                             },
                         }}
                         />
                     <Drawer.Screen
-                        name="Contact"
+                        name="Contato"
                         component={Contact}
                         options={{
-                            tabBarLabel: 'Contato',
-                            tabBarIcon: ({color, size}) => {
-                                return <MaterialCommunityIcons name='phone' color={color} size={size} />
+                            title: 'Contato',
+                            drawerIcon: ({color, size}) => {
+                                return <MaterialCommunityIcons name='account' color={'#00ff44'} size={size} />
                             },
                         }}
                         />
@@ -60,12 +68,13 @@ export default function Routes() {
                         name="Details"
                         component={Details}
                         options={{
-                            tabBarLabel: 'Contato',
-                            tabBarIcon: ({color, size}) => {
+                            title: 'Detalhes',
+                            drawerIcon: ({color, size}) => {
                                 return <MaterialCommunityIcons name='phone' color={color} size={size} />
                             },
                         }}
                         />
+                        
                 </Drawer.Navigator>
         )
     }
