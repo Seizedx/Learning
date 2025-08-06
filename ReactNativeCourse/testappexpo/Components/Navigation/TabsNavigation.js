@@ -6,9 +6,9 @@ import React
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import About from './src/pages/ResourceTabs/AboutTabs'
-import HomePage from './src/pages/ResourceTabs/HomePageTabs';
-import Contact from './src/pages/ResourceTabs/ContactTabs';
+import About from './src/pages/Resource/About'
+import HomePage from './src/pages/Resource/HomePage';
+import Contact from './src/pages/Resource/Contact';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
  
 

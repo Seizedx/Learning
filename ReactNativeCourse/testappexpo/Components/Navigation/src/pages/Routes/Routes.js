@@ -7,8 +7,12 @@ import React
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import StackRoutes from './StackRoutes';
-import About from '../ResourceStackAndTabs/AboutStackAndTabs'
-import Contact from '../ResourceStackAndTabs/ContactStackAndTabs';
+import DrawerRoutes from './DrawerRoutes';
+import TabRoutes from './TabRoutes';
+import HomePage from '../ResourceClean/Home';
+import About from '../ResourceClean/About';
+import Contact from '../ResourceClean/Contact';
+import Details from '../ResourceClean/Details';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
  
 
@@ -17,7 +21,7 @@ const Tab = createBottomTabNavigator();
 export default function Routes() {
         return (
                 <Tab.Navigator
-                    initialRouteName='StackRoutes' 
+                    initialRouteName='Home' 
                     screenOptions={{
                             headerShown: false,
                             tabBarHideOnKeyboard: true,
@@ -41,8 +45,8 @@ export default function Routes() {
                     
                 >
                     <Tab.Screen
-                        name="StackRoutes"
-                        component={StackRoutes}
+                        name="Home"
+                        component={HomePage}
                         options={{
                             tabBarLabel: 'Início',
                             tabBarIcon: ({color, size}) => {
@@ -67,6 +71,46 @@ export default function Routes() {
                             tabBarLabel: 'Contato',
                             tabBarIcon: ({color, size}) => {
                                 return <MaterialCommunityIcons name='phone' color={color} size={size} />
+                            },
+                        }}
+                        />
+                    <Tab.Screen
+                        name="Details"
+                        component={Details}
+                        options={{
+                            tabBarLabel: 'Detalhes',
+                            tabBarIcon: ({color, size}) => {
+                                return <MaterialCommunityIcons name='phone' color={color} size={size} />
+                            },
+                        }}
+                        />
+                    <Tab.Screen
+                        name="StackRoutes"
+                        component={StackRoutes}
+                        options={{
+                            tabBarLabel: 'Stack',
+                            tabBarIcon: ({color, size}) => {
+                                return <MaterialCommunityIcons name='home' color={color} size={size} />
+                            },
+                        }}
+                        />
+                    <Tab.Screen
+                        name="TabRoutes"
+                        component={TabRoutes}
+                        options={{
+                            tabBarLabel: 'Stack',
+                            tabBarIcon: ({color, size}) => {
+                                return <MaterialCommunityIcons name='home' color={color} size={size} />
+                            },
+                        }}
+                        />
+                    <Tab.Screen
+                        name="DrawerRoutes"
+                        component={DrawerRoutes}
+                        options={{
+                            tabBarLabel: 'Drawer',
+                            tabBarIcon: ({color, size}) => {
+                                return <MaterialCommunityIcons name='account-details' color={color} size={size} />
                             },
                         }}
                         />

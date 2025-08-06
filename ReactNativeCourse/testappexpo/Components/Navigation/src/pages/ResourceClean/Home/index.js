@@ -3,14 +3,17 @@ import {
     StyleSheet,
     View,
     Button,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
+} from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';         //////////////////////////////
+ 
+ 
 export default function HomePage() {
     const navigation = useNavigation();
 
     function navigateAbout() {
-        navigation.navigate('About');
+        navigation.navigate('About')
     }
         return (
             <View style={styles.container}>
@@ -18,17 +21,13 @@ export default function HomePage() {
                     <Text style={styles.mainTitle}>Home Screen</Text>
                     <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
                     <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                    <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
                 </View>
-                <View style={styles.buttons}></View>
                 <Button
-                    title={'About'}
-                    onPress={navigateAbout}
-                    color={'blue'}
-                />
-                <Button
-                    title={'Details'}
-                    onPress={() => navigation.navigate('Details')}
-                    color={'green'}
+                    // title="About" onPress={() => {
+                    //     navigation.navigate('About');
+                    // }}
+                    title="About" onPress={navigateAbout}
                 />
             </View>
         )
@@ -39,7 +38,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: 15,
     },
     mainTitle: {
         marginTop: 50,
@@ -51,9 +49,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginLeft: 30,
         marginRight: 30,
-    },
-    buttons: {
-        gap: 10,
     }
 });
 

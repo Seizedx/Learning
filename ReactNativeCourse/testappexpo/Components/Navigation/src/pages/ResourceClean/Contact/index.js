@@ -1,16 +1,33 @@
+import React, { useEffect, useState } from 'react';
 import { 
     Text,
     StyleSheet,
     View,
+    Button,
 
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';         //////////////////////////////
 
 export default function Contact() {
+    const navigation = useNavigation();
+
+    function navigateAbout() {
+        navigation.navigate('About')
+    }
         return (
             <View style={styles.container}>
                 <View>
                     <Text style={styles.mainTitle}>Contact</Text>
                     <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                </View>
+                <View style={styles.button}>
+                <Button
+                    title="About" onPress={navigateAbout}
+                />
+                <Button
+                    color={'red'}
+                    title="Go Back" onPress={() => navigation.goBack()}
+                />
                 </View>
             </View>
         )

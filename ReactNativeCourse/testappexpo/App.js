@@ -37,8 +37,9 @@ import { View, StatusBar } from 'react-native';
 // import UsingAnimatable from './Components/Animations/UsingAnimatable';
 // import VectorIcons from './Components/Icons/VectorIcons';
 // import StackNavigation from './Components/Navigation/StackNavigation';
-// import UsingTabs from './Components/Navigation/UsingTabs';
-import UsingStackAndTabs from './Components/Navigation/UsingStackAndTabs';
+// import UsingTabs from './Components/Navigation/TabsNavigation';
+// import UsingStackAndTabs from './Components/Navigation/StackAndTabsNavigation';
+import DrawerNavigation from './Components/Navigation/DrawerNavigation';
 
 
 export class App extends Component {
@@ -134,7 +135,9 @@ export class App extends Component {
 
         {/* <UsingTabs UtilizandoTabs /> */}
 
-        <UsingStackAndTabs UtilizandoStackETabsAoMesmoTempo />
+        {/* <UsingStackAndTabs UtilizandoStackETabsAoMesmoTempo /> */}
+
+        <DrawerNavigation UtilizandoDrawerNavigation /> 
 
       </View>
     )

@@ -1,16 +1,88 @@
 //Documentação oficial do Bottom Tabs Navigator: https://reactnavigation.org/docs/bottom-tab-navigator/
 // npm install @react-navigation/bottom-tabs
 
-import React
- from 'react';
- import { NavigationContainer } from '@react-navigation/native';
- import Routes from './src/pages/Routes/';
+import { View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default function App() {
+import StackRoutes from './StackRoutes';
+import DrawerRoutes from './DrawerRoutes';
+import TabRoutes from './TabRoutes';
+import HomePage from '../ResourceClean/Home';
+import About from '../ResourceClean/About';
+import Contact from '../ResourceClean/Contact';
+import Details from '../ResourceClean/Details';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+ 
+
+const Tab = createBottomTabNavigator(); 
+
+export default function Routes() {
         return (
-            <NavigationContainer>
-                <Routes />
-            </NavigationContainer>
+                <Tab.Navigator
+                    initialRouteName='StackRoutes' 
+                    screenOptions={{
+                            headerShown: false,
+                            tabBarHideOnKeyboard: true,
+                            borderTopWidth: 0,
+                            tabBarActiveTintColor: 'red',
+                            tabBarInactiveTintColor: '#ffffff',
+                            tabBarBackground: () => (
+                                <View style={{ flex: 1, backgroundColor: '#8a8a8aff' }} /> // ou image, qualquer coisa
+                                ),
+                            // tabBarShowLabel: false // funciona em todos,
+                            // tabBarIconStyle: {
+                            //     marginBottom: 5,
+                            // },
+                            tabBarLabelStyle: {
+                                marginTop: -5,
+                            },
+                            // tabBarActiveBackgroundColor: 'yellow',
+                            // tabBarInactiveBackgroundColor: 'blue', 
+                            // tabBarLabelPosition: 'beside-icon',
+                        }}
+                    
+                >
+                    <Tab.Screen
+                        name="Home"
+                        component={HomePage}
+                        options={{
+                            tabBarLabel: 'Início',
+                            tabBarIcon: ({color, size}) => {
+                                return <MaterialCommunityIcons name='home' color={color} size={size} />
+                            },
+                        }}
+                        />
+                    <Tab.Screen
+                        name="About"
+                        component={About}
+                        options={{
+                            tabBarLabel: 'Sobre',
+                            tabBarIcon: ({color, size}) => {
+                                return <MaterialCommunityIcons name='information' color={color} size={size} />
+                            },
+                        }}
+                        />
+                    <Tab.Screen
+                        name="Contact"
+                        component={Contact}
+                        options={{
+                            tabBarLabel: 'Contato',
+                            tabBarIcon: ({color, size}) => {
+                                return <MaterialCommunityIcons name='phone' color={color} size={size} />
+                            },
+                        }}
+                        />
+                    <Tab.Screen
+                        name="Details"
+                        component={Details}
+                        options={{
+                            tabBarLabel: 'Detalhes',
+                            tabBarIcon: ({color, size}) => {
+                                return <MaterialCommunityIcons name='phone' color={color} size={size} />
+                            },
+                        }}
+                        />
+                </Tab.Navigator>
         )
     }
 

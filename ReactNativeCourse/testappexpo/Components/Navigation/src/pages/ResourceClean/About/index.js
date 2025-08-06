@@ -2,15 +2,26 @@ import {
     Text,
     StyleSheet,
     View,
-
+    Button,
 } from 'react-native';
 
-export default function Contact() {
+import { useNavigation} from '@react-navigation/native';  /////////////////
+
+
+
+export default function About() {
+    const navigation = useNavigation();
         return (
             <View style={styles.container}>
                 <View>
-                    <Text style={styles.mainTitle}>Contact</Text>
+                    <Text style={styles.mainTitle}>About Screen</Text>
                     <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                    <Text style={styles.mainSubtitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, itaque, ab nobis sunt cumque cupiditate blanditiis, nam voluptatum corporis error tempora at provident aspernatur accusamus minima maiores eveniet saepe quis!</Text>
+                    <Button
+                        title="Contact" onPress={() => {
+                            navigation.navigate('Contact');
+                        }}
+                    />
                 </View>
             </View>
         )
@@ -23,7 +34,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     mainTitle: {
-        marginTop: 50,
+        marginTop: 30,
         fontSize: 50,
         textAlign: 'center',
     },
@@ -32,8 +43,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginLeft: 30,
         marginRight: 30,
-    },
+    }
 });
+
 
 //Componentes Principais:
 
