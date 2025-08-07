@@ -8,7 +8,7 @@ import {
 
 import { 
     DrawerContentScrollView,
-    DrawerItemList,
+    DrawerItemList,        //Esse chama o os itens que ja foram desenhados no drawer, utlizar {...props}
  } from "@react-navigation/drawer";
 
 export default function CustomDrawer(props) {
@@ -21,10 +21,11 @@ export default function CustomDrawer(props) {
                     style={styles.image}
                 />
             </View>
-            <DrawerItemList {...props}/> {/* Esse chama o os itens que ja foram desenhados no drawer */}
+            <DrawerItemList {...props}/> 
         </DrawerContentScrollView>
     )
 }
+
 
 const styles = StyleSheet.create({
     container: {

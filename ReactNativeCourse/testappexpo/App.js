@@ -39,7 +39,8 @@ import { View, StatusBar } from 'react-native';
 // import StackNavigation from './Components/Navigation/StackNavigation';
 // import UsingTabs from './Components/Navigation/TabsNavigation';
 // import UsingStackAndTabs from './Components/Navigation/StackAndTabsNavigation';
-import DrawerNavigation from './Components/Navigation/DrawerNavigation';
+// import DrawerNavigation from './Components/Navigation/DrawerNavigation';
+import Firebase1 from './Components/Firebase/Firebase1';
 
 
 export class App extends Component {
@@ -137,7 +138,9 @@ export class App extends Component {
 
         {/* <UsingStackAndTabs UtilizandoStackETabsAoMesmoTempo /> */}
 
-        <DrawerNavigation UtilizandoDrawerNavigation /> 
+        {/* <DrawerNavigation UtilizandoDrawerNavigation />  */}
+
+        <Firebase1 UtilizandoOFirebase/> 
 
       </View>
     )
