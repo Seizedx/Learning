@@ -32,7 +32,7 @@ import {
 import { db } from './src/firebaseConfig'; // importa o db do firebase
 import { doc, getDoc, onSnapshot } from 'firebase/firestore'; 
 
-export default function Firebase1() {
+export default function ConsumeFirestoreDatabase() {
     const [dogName, setDogName] = useState('');
     const [ estimatedAge, setEstimatedAge] = useState('');
     const [race, setRace] = useState('');
@@ -53,7 +53,7 @@ export default function Firebase1() {
             //     console.log(error);
             // })
 
-            //maneira 2 atualiza diretamente
+            //maneira 2 atualiza a qualquer momento
             onSnapshot(doc(db, "users", "1"), (doc) => {
                 setDogName(doc.data()?.dogName);
                 setEstimatedAge(doc.data()?.estimatedAge); // o ? faz com que nao gere erro e volte vazio
@@ -112,3 +112,59 @@ const styles = StyleSheet.create({
         color: '#4d4d4d',
     }
 });
+
+
+//Módulo Principal:
+
+// firestore(): Inicializa a instância do Firestore (ex.: import firestore from '@react-native-firebase/firestore').
+
+//Métodos de Coleção e Documento:
+
+// collection(path): Acessa uma coleção pelo caminho (ex.: firestore().collection('users')).
+// doc(path): Acessa um documento pelo caminho (ex.: firestore().collection('users').doc('userId')).
+// collectionGroup(id): Consulta documentos em todas as coleções com o mesmo ID (ex.: firestore().collectionGroup('posts')).
+
+//Métodos de Escrita:
+
+// set(data, options): Define os dados de um documento, sobrescreve tudo (ex.: docRef.set({ name: 'John' })).
+// update(data): Atualiza campos específicos de um documento (ex.: docRef.update({ age: 30 })).
+// add(data): Adiciona um novo documento a uma coleção com ID automático (ex.: collectionRef.add({ title: 'Post' })).
+// delete(): Remove um documento (ex.: docRef.delete()).
+// batch(): Cria um lote para operações em massa (ex.: firestore().batch()).
+// batch.set(docRef, data, options): Define dados em um documento no lote.
+// batch.update(docRef, data): Atualiza dados em um documento no lote.
+// batch.delete(docRef): Remove um documento no lote.
+// batch.commit(): Executa todas as operações do lote.
+
+//Métodos de Leitura:
+
+// get(options): Recupera os dados de um documento ou coleção (ex.: docRef.get() ou collectionRef.get()).
+// onSnapshot(callback, errorCallback): Escuta mudanças em tempo real em um documento ou coleção.
+
+//Métodos de Consulta (Query):
+
+// where(field, op, value): Filtra documentos (ex.: collectionRef.where('age', '>=', 18)).
+// orderBy(field, direction): Ordena resultados (ex.: collectionRef.orderBy('createdAt', 'desc')).
+// limit(limit): Limita o número de resultados (ex.: collectionRef.limit(10)).
+// startAt(value): Inicia a consulta em um valor (ex.: collectionRef.startAt(100)).
+// startAfter(value): Inicia após um valor (ex.: collectionRef.startAfter(100)).
+// endAt(value): Termina em um valor (ex.: collectionRef.endAt(200)).
+// endBefore(value): Termina antes de um valor (ex.: collectionRef.endBefore(200)).
+
+//Métodos de Configuração e Utilitários:
+
+// settings(options): Configura o Firestore (ex.: { cacheSizeBytes: 104857600 }).
+// clearPersistence(): Limpa o cache local do Firestore (ex.: firestore().clearPersistence()).
+// enablePersistence(options): Ativa o modo offline (ex.: firestore().enablePersistence()).
+// disableNetwork(): Desativa a rede, força uso do cache offline.
+// enableNetwork(): Reativa a rede.
+// terminate(): Encerra a instância do Firestore.
+// waitForPendingWrites(): Aguarda todas as escritas pendentes serem confirmadas.
+
+// Propriedades de Resultados (ex.: get(), onSnapshot())
+
+// docs: Array de documentos retornados em uma consulta (ex.: querySnapshot.docs).
+// data(): Retorna os dados de um documento (ex.: docSnapshot.data()).
+// id: ID do documento (ex.: docSnapshot.id).
+// exists: Booleano indicando se o documento existe (ex.: docSnapshot.exists).
+// metadata: Metadados do snapshot (ex.: snapshot.metadata.fromCache).

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, ScrollView } from 'react-native';
 // import TestImage from './Components/Structure/ImageComponent';
 // import ConstructorState from './Components/Structure/ConstructorState';
 // import StyleSheetUsage from './Components/Structure/StyleSheetList';
@@ -40,108 +40,115 @@ import { View, StatusBar } from 'react-native';
 // import UsingTabs from './Components/Navigation/TabsNavigation';
 // import UsingStackAndTabs from './Components/Navigation/StackAndTabsNavigation';
 // import DrawerNavigation from './Components/Navigation/DrawerNavigation';
-import Firebase1 from './Components/Firebase/Firebase1';
+// import ConsumeFirestoreDatabase from './Components/Firebase/ConsumeFirestoreDatabase';
+import RegisterFirestoreDatabase from './Components/Firebase/RegisterFirestoreDatabase';
 
 
 export class App extends Component {
   render() {
     return (
-      <View 
-      style={
-        { backgroundColor:"#828282", height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100%'}
-      }
-      >
+      <View>
+        <View>
+          <StatusBar
+            barStyle="light-content"
+            backgroundColor="#000000"
+            hidden={false}
+            animated={true}
+            translucent={false}
+          />
+        </View>
+        <ScrollView
+          style={
+            { backgroundColor:"#828282", height: '100%', width:'100%', padding:0, margin:0, maxHeight: '100%', maxWidth: '100%'}
+          }>
+          <View>
 
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="#000000"
-        hidden={false}
-        animated={true}
-        translucent={false}
-      />
+            {/* <TestImage largura={100} altura={100} nome={'testName'} ChamandoComponentComPropsDiretamente/> */}
 
-        {/* <TestImage largura={100} altura={100} nome={'testName'} ChamandoComponentComPropsDiretamente/> */}
+            {/* <ConstructorState UsandoConstructorParaStatesEBind />         */}
 
-        {/* <ConstructorState UsandoConstructorParaStatesEBind />         */}
+            {/* <StyleSheetUsage UsandoGrupoDeEstilos/> */}
 
-        {/* <StyleSheetUsage UsandoGrupoDeEstilos/> */}
+            {/* <DynamicAndStaticSizing AlterandoTamanhoDosChildrenNaTela /> */}
 
-        {/* <DynamicAndStaticSizing AlterandoTamanhoDosChildrenNaTela /> */}
+            {/* <FlexBoxAndAlignments UtilizandoFuncoesDoFlexBox/> */}
 
-        {/* <FlexBoxAndAlignments UtilizandoFuncoesDoFlexBox/> */}
+            {/* <TextInputTest UtilizandoEReaproveitandoValorDeInput /> */}
 
-        {/* <TextInputTest UtilizandoEReaproveitandoValorDeInput /> */}
+            {/* <Buttons UtilizandoFuncaoOnPressDeBotaoECriandoFunction/> */}
 
-        {/* <Buttons UtilizandoFuncaoOnPressDeBotaoECriandoFunction/> */}
+            {/* <FortuneCookieApp AplicacaoDeBiscoitoDaSorte/> */}
 
-        {/* <FortuneCookieApp AplicacaoDeBiscoitoDaSorte/> */}
+            {/* <Cronometer AplicacaoDeUmCronometro/> */}
 
-        {/* <Cronometer AplicacaoDeUmCronometro/> */}
+            {/* <Cronometer AplicacaoDeUmCronometro/> */}
 
-        {/* <Cronometer AplicacaoDeUmCronometro/> */}
+            {/* <ScrollView TestandoScrollView /> */}
 
-        {/* <ScrollView TestandoScrollView /> */}
+            {/* <FlatListExample RenderCondicional /> */}
 
-        {/* <FlatListExample RenderCondicional /> */}
+            {/* <ItemDivide SeparandoItensEmArquivosDiferentes /> */}
 
-        {/* <ItemDivide SeparandoItensEmArquivosDiferentes /> */}
+            {/* <PickerExample SeletorComOpções /> */}
 
-        {/* <PickerExample SeletorComOpções /> */}
+            {/* <SliderExample SliderComOpções /> */}
 
-        {/* <SliderExample SliderComOpções /> */}
+            {/* <SwitchExample SeletorONOFFComOpções /> */}
 
-        {/* <SwitchExample SeletorONOFFComOpções /> */}
+            {/* <ChallengeApp AplicacaoParaTestarFunções /> */}
 
-        {/* <ChallengeApp AplicacaoParaTestarFunções /> */}
+            {/* <InstaExample ExemploDeCriaçãoDeAplicação/> */}
 
-        {/* <InstaExample ExemploDeCriaçãoDeAplicação/> */}
+            {/* <AsyncStorageExample TestandoAsyncStorage /> */}
 
-        {/* <AsyncStorageExample TestandoAsyncStorage /> */}
+            {/* <ModalExample UtilizandoModal /> */}
 
-        {/* <ModalExample UtilizandoModal /> */}
+            {/* <ChallengeApp2 AplicaçãoParaTestarFunções2/> */}
 
-        {/* <ChallengeApp2 AplicaçãoParaTestarFunções2/> */}
+            {/* <APIUseStateExample TestandoHookAPIUseState/> */}
 
-        {/* <APIUseStateExample TestandoHookAPIUseState/> */}
+            {/* <APIUseEffectExample TestandoHookAPIUseEffect /> */}
 
-        {/* <APIUseEffectExample TestandoHookAPIUseEffect /> */}
+            {/* <APIUseMemoExample TestandoHookAPIUseMemo /> */}
 
-        {/* <APIUseMemoExample TestandoHookAPIUseMemo /> */}
+            {/* <APIUseRefExample TestandoHookAPIUseRef /> */}
 
-        {/* <APIUseRefExample TestandoHookAPIUseRef /> */}
+            {/* <HTTPRequisition ComoUtilizarRequisições />  */}
 
-        {/* <HTTPRequisition ComoUtilizarRequisições />  */}
+            {/* <CurrencyConversion MaisUmaAplicaçãoParaTestarAPIRequest /> */}
 
-        {/* <CurrencyConversion MaisUmaAplicaçãoParaTestarAPIRequest /> */}
+            {/* <CEPFinder APPCEPFINDERPRACTICE /> */}
 
-        {/* <CEPFinder APPCEPFINDERPRACTICE /> */}
+            {/* <ChallengeApp3 AplicativoDeContadorDeRestaurante /> */}
 
-        {/* <ChallengeApp3 AplicativoDeContadorDeRestaurante /> */}
+            {/* <FirstStepsAnimation UtilizandoAnimations /> */}
 
-        {/* <FirstStepsAnimation UtilizandoAnimations /> */}
+            {/* <SequenceAnimation AnimacoesEmSequencia/> */}
 
-        {/* <SequenceAnimation AnimacoesEmSequencia/> */}
+            {/* <ParallelAnimation AnimacoesEmParalelo /> */}
 
-        {/* <ParallelAnimation AnimacoesEmParalelo /> */}
+            {/* <LoopAnimation AnimaçoesEmLoop  /> */}
 
-        {/* <LoopAnimation AnimaçoesEmLoop  /> */}
+            {/* <InterpolationInAnimations AdicionandoModificacoesEmAnimações /> */}
 
-        {/* <InterpolationInAnimations AdicionandoModificacoesEmAnimações /> */}
+            {/* <UsingAnimatable UtilizandoAnimatable /> */}
 
-        {/* <UsingAnimatable UtilizandoAnimatable /> */}
+            {/* <VectorIcons TestandoIcons /> */}
 
-        {/* <VectorIcons TestandoIcons /> */}
+            {/* <StackNavigation ComecandoAUtilizarNavigation /> */}
 
-        {/* <StackNavigation ComecandoAUtilizarNavigation /> */}
+            {/* <UsingTabs UtilizandoTabs /> */}
 
-        {/* <UsingTabs UtilizandoTabs /> */}
+            {/* <UsingStackAndTabs UtilizandoStackETabsAoMesmoTempo /> */}
 
-        {/* <UsingStackAndTabs UtilizandoStackETabsAoMesmoTempo /> */}
+            {/* <DrawerNavigation UtilizandoDrawerNavigation />  */}
 
-        {/* <DrawerNavigation UtilizandoDrawerNavigation />  */}
+            {/* <ConsumeFirestoreDatabase ConsumindoItensDoFirestoreDatabase />  */}
+            
+            <RegisterFirestoreDatabase RegistrandoItensNoFirestoreDatabase /> 
 
-        <Firebase1 UtilizandoOFirebase/> 
-
+          </View>
+        </ScrollView>
       </View>
     )
   }
